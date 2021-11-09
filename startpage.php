@@ -1,7 +1,7 @@
 <?php
-session_start();
+require_once 'includes/config.php';
 require_once 'includes/header.html';
-require_once 'includes/functions.php';
+
 
 if(isset($_COOKIE['login']) && isset($_COOKIE['password'])){
     header('Location: home.php');

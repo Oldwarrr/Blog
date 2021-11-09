@@ -1,7 +1,7 @@
 <?php
-session_start();
+require_once 'includes/config.php';
 require_once 'includes/header.html';
-require_once 'includes/functions.php';
+
 if(!isset($_SESSION['changePass']) && !isset($_SESSION['registration'])){
     header('Location: startpage.php');
     die;

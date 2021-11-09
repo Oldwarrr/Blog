@@ -1,7 +1,7 @@
 <?php
+require_once 'includes/config.php';
 require_once 'includes/header.html';
-require_once 'includes/db.php';
-require_once 'includes/functions.php';
+
 
 if(!isset($_SESSION['mail'])){
     header('Location: recover.php');

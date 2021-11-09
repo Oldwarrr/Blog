@@ -1,5 +1,5 @@
 <?php
-require_once 'db.php';
+require_once 'includes/config.php';
 
 $categories_q = $mysql->query("SELECT * FROM `categories`");
 $categories = [];
@@ -54,6 +54,9 @@ $prof = mysqli_fetch_assoc($profile);
                 </li>
                 <li class="header__nav__list__item">
                     <a href="https://vk.com/id99243211" class="header__nav__list__item__link" target="_blank">ВКонтакте</a>
+                </li>
+                <li class="header__nav__list__item">
+                    <a href="https://github.com/Oldwarrr" class="header__nav__list__item__link" target="_blank">GitHub</a>
                 </li>
                 <li class="header__nav__list__item">
                     <a href="home.php?do=exit" class="header__nav__list__item__link">Выход</a>             

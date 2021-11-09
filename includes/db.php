@@ -1,4 +1,9 @@
 <?php
 session_start();
-$mysql = new mysqli('blog','root','','blog');
+$mysql = mysqli_connect(
+    $config['db']['hostname'],
+    $config['db']['username'],
+    $config['db']['password'],
+    $config['db']['database']
+);
 

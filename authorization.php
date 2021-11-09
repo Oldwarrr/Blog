@@ -1,7 +1,7 @@
 <?php
+require_once 'includes/config.php';
 require_once 'includes/header.html';
-require_once 'includes/db.php';
-require_once 'includes/functions.php';
+
 unset($_SESSION['mail']);
 unset($_SESSION['answer']);
 unset($_SESSION['changePass']);
