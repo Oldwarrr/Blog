@@ -14,7 +14,7 @@ if(isset($_POST['submit'])){
     $email = $_POST['email'];
     $_SESSION['errors'] = validate($fields);
     if(empty($_SESSION['errors'])){
-        $bdEmail = $mysql->query("SELECT * FROM `users` WHERE `email` = '$email'");
+        $bdEmail = $connection->query("SELECT * FROM `users` WHERE `email` = '$email'");
         if($bdEmail->num_rows > 0){
             $_SESSION['mail'] = $email;
             header('Location: questionAnswer.php');

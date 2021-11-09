@@ -24,10 +24,10 @@ if(isset($_POST['submit'])){
     if(empty($_SESSION['errors'])){ //Если ошибок нет , пройдена валидация, то....
         
         $login = $fields['login']['value']; // введенный логин
-        $checkLogin = $mysql->query("SELECT * FROM `users` WHERE `login` = '$login'"); // Проверка через num_rows наличие логина
+        $checkLogin = $connection->query("SELECT * FROM `users` WHERE `login` = '$login'"); // Проверка через num_rows наличие логина
         if($checkLogin->num_rows > 0){
             $password = $fields['password']['value'];
-            $dbPassword = $mysql->query("SELECT `password` FROM `users` WHERE `login` = '$login'");
+            $dbPassword = $connection->query("SELECT `password` FROM `users` WHERE `login` = '$login'");
             $checkPassword = $dbPassword->fetch_assoc();
             if($password == $checkPassword['password']){
                 if(isset($_POST['checkbox'])){

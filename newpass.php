@@ -24,7 +24,7 @@ if(isset($_POST['submit'])){
     $_SESSION['errors'] = validate($fields);
     if(empty($_SESSION['errors'])){
         if($_POST['password'] == $_POST['repeatpassword']){
-            $changePassword = $mysql->query("UPDATE `users` SET `password` = '$_POST[password]' WHERE `email` = '$_SESSION[mail]'");
+            $changePassword = $connection->query("UPDATE `users` SET `password` = '$_POST[password]' WHERE `email` = '$_SESSION[mail]'");
             $_SESSION['changePass'] = 1;
             header('Location: alertSuccess.php');
             die;

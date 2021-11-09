@@ -39,9 +39,9 @@ $limit = 6; // Макс. количество статей на странице
 
 // Количество статей в БД
 if(isset($_GET['category'])){
-    $countOfId = $mysql->query("SELECT COUNT(`id`) FROM `articles` WHERE `category_id` =" . (int)$_GET['category']);
+    $countOfId = $connection->query("SELECT COUNT(`id`) FROM `articles` WHERE `category_id` =" . (int)$_GET['category']);
 }else{
-    $countOfId = $mysql->query("SELECT COUNT(`id`) FROM `articles`"); 
+    $countOfId = $connection->query("SELECT COUNT(`id`) FROM `articles`"); 
 }
 $count = $countOfId->fetch_assoc()['COUNT(`id`)']; // Присвоение переменной значения,  равного количеству статей в БД
 $pageCount = ceil($count / $limit); // Количество страниц пагинации
@@ -52,7 +52,7 @@ if($page < 1){ // Защита от нулевого значения номер
 	$page = $pageCount;
 }
 $start = ($page - 1)*$limit; // Порядковый номер комментария, с которого идет отсчет в БД (Для SQL запроса)
-$add = $mysql->query("SELECT * FROM `articles` ORDER BY `articles` . `id` DESC LIMIT $start, $limit"); // Данные из БД
+$add = $connection->query("SELECT * FROM `articles` ORDER BY `articles` . `id` DESC LIMIT $start, $limit"); // Данные из БД
 
 
 $centerPages = ""; // В дальнейшем заполняемый (в зависимости от условий) ряд с номерами страниц (пагинация)
@@ -70,7 +70,7 @@ $disabled = 'disabled';
 
 
 if(isset($_GET['category'])){
-    $articles = $mysql->query("SELECT * FROM `articles` WHERE `category_id` = $_GET[category] ORDER BY `id` DESC LIMIT $start,$limit");
+    $articles = $connection->query("SELECT * FROM `articles` WHERE `category_id` = $_GET[category] ORDER BY `id` DESC LIMIT $start,$limit");
     if($pageCount >= 5){
         if($page == 1){
             $centerPages .= "<li><span class='pagination__page active'>$page</span></li>";
@@ -105,7 +105,7 @@ if(isset($_GET['category'])){
         }
     }
 }else{
-    $articles = $mysql->query("SELECT * FROM `articles` ORDER BY `id` DESC LIMIT $start,$limit");
+    $articles = $connection->query("SELECT * FROM `articles` ORDER BY `id` DESC LIMIT $start,$limit");
     if($pageCount >= 5){
         if($page == 1){
             $centerPages .= "<li><span class='pagination__page active'>$page</span></li>";
@@ -206,7 +206,7 @@ if(isset($_GET['category'])){
                 <div class="articles-block">
 
                     <?php
-                        // $articles_category = $mysql->query("SELECT * FROM `articles` WHERE `id` = " . (int)$_GET['category']);
+                        // $articles_category = $connection->query("SELECT * FROM `articles` WHERE `id` = " . (int)$_GET['category']);
                         // if(false){
                         //     echo 'Статья не найдена';
                         // }else 
@@ -220,14 +220,14 @@ if(isset($_GET['category'])){
 
                     <div class="articles-block__content">
                     <?php
-                        // $articles = $mysql->query("SELECT * FROM `articles` ORDER BY `id` DESC LIMIT $start,$limit");
+                        // $articles = $connection->query("SELECT * FROM `articles` ORDER BY `id` DESC LIMIT $start,$limit");
 
 
 
                         // if(isset($_GET['category'])){
-                        //     $articles = $mysql->query("SELECT * FROM `articles` WHERE `category_id` =" . (int)$_GET['category']);
+                        //     $articles = $connection->query("SELECT * FROM `articles` WHERE `category_id` =" . (int)$_GET['category']);
                         // }else{
-                        //     $articles = $mysql->query("SELECT * FROM `articles` ORDER BY `id` DESC LIMIT $start,$limit");
+                        //     $articles = $connection->query("SELECT * FROM `articles` ORDER BY `id` DESC LIMIT $start,$limit");
                         // }
                     
                         while($art = mysqli_fetch_assoc($articles))

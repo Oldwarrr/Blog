@@ -13,9 +13,9 @@ $fields = [
         'field_name' => 'Ответ'
     ]
 ];
-$bdQuestion = $mysql->query("SELECT `question` FROM `users` WHERE `email`= '$_SESSION[mail]'");
+$bdQuestion = $connection->query("SELECT `question` FROM `users` WHERE `email`= '$_SESSION[mail]'");
 $bdQuestionResult = $bdQuestion->fetch_assoc();
-$bdAnswer = $mysql->query("SELECT `answer` FROM `users` WHERE `email`= '$_SESSION[mail]'");
+$bdAnswer = $connection->query("SELECT `answer` FROM `users` WHERE `email`= '$_SESSION[mail]'");
 $bdAnswerResult = $bdAnswer->fetch_assoc();
 if(isset($_POST['submit'])){
     $fields = loadValue($fields);

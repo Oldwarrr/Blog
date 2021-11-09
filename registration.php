@@ -45,11 +45,11 @@ $fields =
 
             // На существование логина
             $login = $fields['login']['value'];
-            $checkLogin = $mysql->query("SELECT * FROM `users` WHERE `login` = '$login'");
+            $checkLogin = $connection->query("SELECT * FROM `users` WHERE `login` = '$login'");
             if($checkLogin->num_rows == 0){
                 // На существование E-mail
                 $email = $fields['email']['value'];
-                $checkEmail = $mysql->query("SELECT * FROM `users` WHERE `email` = '$email'");
+                $checkEmail = $connection->query("SELECT * FROM `users` WHERE `email` = '$email'");
                 if($checkEmail->num_rows == 0){
 
                     $name = $fields['name']['value'];
@@ -58,7 +58,7 @@ $fields =
                     $answer = $fields['answer']['value'];
 
                     // Сохранение в БД
-                    $registration = $mysql->query("INSERT INTO `users`(`name`, `login`, `password`, `email`, `question`, `answer`) 
+                    $registration = $connection->query("INSERT INTO `users`(`name`, `login`, `password`, `email`, `question`, `answer`) 
                     VALUES(
                         '$name',
                         '$login',

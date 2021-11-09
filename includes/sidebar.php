@@ -5,7 +5,7 @@
             <aside class="aside art-top">
                 <div class="title">Топ читаемых статей</div>
                 <?php
-                        $articles = $mysql->query("SELECT * FROM `articles` ORDER BY `views` DESC LIMIT 5");
+                        $articles = $connection->query("SELECT * FROM `articles` ORDER BY `views` DESC LIMIT 5");
                     
                         while($art = mysqli_fetch_assoc($articles))
                         
@@ -41,7 +41,7 @@
             <!-- Последние комментарии -->
             <aside class="aside last-comments"><div class="title">Последние комментарии</div>
             <?php
-                        $comments = $mysql->query("SELECT * FROM `comments` ORDER BY `id` DESC LIMIT 5");
+                        $comments = $connection->query("SELECT * FROM `comments` ORDER BY `id` DESC LIMIT 5");
                     
                         while($comment = mysqli_fetch_assoc($comments))
                         

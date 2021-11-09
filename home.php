@@ -41,7 +41,7 @@ if(!empty($_GET) && $_GET['do'] == 'exit'){
                 <div class="articles-block fd-row">
 
                     <?php
-                        $articles = $mysql->query("SELECT * FROM `articles` ORDER BY `id` DESC LIMIT 6");
+                        $articles = $connection->query("SELECT * FROM `articles` ORDER BY `id` DESC LIMIT 6");
                     
                         while($art = mysqli_fetch_assoc($articles))
                         
@@ -91,7 +91,7 @@ if(!empty($_GET) && $_GET['do'] == 'exit'){
 
 
                 <?php
-                        $articles = $mysql->query("SELECT * FROM `articles` WHERE `category_id` = '1' ORDER BY `id` DESC LIMIT 6");
+                        $articles = $connection->query("SELECT * FROM `articles` WHERE `category_id` = '1' ORDER BY `id` DESC LIMIT 6");
 
                         while($art = mysqli_fetch_assoc($articles))
                         
@@ -141,7 +141,7 @@ if(!empty($_GET) && $_GET['do'] == 'exit'){
 
 
                 <?php
-                        $articles = $mysql->query("SELECT * FROM `articles` WHERE `category_id` = '2' ORDER BY `id` DESC LIMIT 6");
+                        $articles = $connection->query("SELECT * FROM `articles` WHERE `category_id` = '2' ORDER BY `id` DESC LIMIT 6");
 
                         while($art = mysqli_fetch_assoc($articles))
                         
@@ -191,7 +191,7 @@ if(!empty($_GET) && $_GET['do'] == 'exit'){
 
 
                 <?php
-                        $articles = $mysql->query("SELECT * FROM `articles` WHERE `category_id` = '3' ORDER BY `id` DESC LIMIT 6");
+                        $articles = $connection->query("SELECT * FROM `articles` WHERE `category_id` = '3' ORDER BY `id` DESC LIMIT 6");
 
                         while($art = mysqli_fetch_assoc($articles))
                         
@@ -241,7 +241,7 @@ if(!empty($_GET) && $_GET['do'] == 'exit'){
 
 
                 <?php
-                        $articles = $mysql->query("SELECT * FROM `articles` WHERE `category_id` = '4' ORDER BY `id` DESC LIMIT 6");
+                        $articles = $connection->query("SELECT * FROM `articles` WHERE `category_id` = '4' ORDER BY `id` DESC LIMIT 6");
 
                         while($art = mysqli_fetch_assoc($articles))
                         

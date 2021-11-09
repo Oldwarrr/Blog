@@ -27,7 +27,7 @@ if(!empty($_GET) &&  isset($_GET['do'])){
 
 <!-- Проверка существования страницы -->
 <?php
-    $article = $mysql->query("SELECT * FROM `articles` WHERE `id` = " . (int)$_GET['id']);
+    $article = $connection->query("SELECT * FROM `articles` WHERE `id` = " . (int)$_GET['id']);
     if(mysqli_num_rows($article) <= 0){
         echo 'Статья не найдена';
     }else 
@@ -35,7 +35,7 @@ if(!empty($_GET) &&  isset($_GET['do'])){
     {
     $art = mysqli_fetch_assoc($article);
     // Счетчик просмотров
-    $mysql->query("UPDATE `articles` SET `views` = `views` + 1 WHERE `id` =" . (int)$art['id']);
+    $connection->query("UPDATE `articles` SET `views` = `views` + 1 WHERE `id` =" . (int)$art['id']);
 ?>
 
 <!-- Добавление комментария -->
@@ -43,7 +43,7 @@ if(!empty($_GET) &&  isset($_GET['do'])){
     if(isset($_POST['submit'])){
         $_SESSION['errors'] = '';
         if(!empty($_POST['comment'])){
-            $mysql->query("INSERT INTO `comments`(`author`,`text`,`articles_id`) VALUES('$prof[name]','$_POST[comment]','$art[id]')");
+            $connection->query("INSERT INTO `comments`(`author`,`text`,`articles_id`) VALUES('$prof[name]','$_POST[comment]','$art[id]')");
         }else{
             $_SESSION['errors'] .= '<span style="display:block;color:red; margin-top:10px;">Заполните поле комментария!</span>';
             
@@ -87,7 +87,7 @@ if(!empty($_GET) &&  isset($_GET['do'])){
 
                     <!-- Проверка наличия комментариев -->
                     <?php
-                        $comments = $mysql->query("SELECT * FROM `comments` WHERE `articles_id` =  {$art['id']} ORDER BY `id` DESC");
+                        $comments = $connection->query("SELECT * FROM `comments` WHERE `articles_id` =  {$art['id']} ORDER BY `id` DESC");
                         if(mysqli_num_rows($comments) > 0){
                     ?>
 

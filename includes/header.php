@@ -1,15 +1,15 @@
 <?php
 require_once 'includes/config.php';
 
-$categories_q = $mysql->query("SELECT * FROM `categories`");
+$categories_q = $connection->query("SELECT * FROM `categories`");
 $categories = [];
 while($cat = mysqli_fetch_assoc($categories_q)){
     $categories[] = $cat;
 }
 if(isset($_COOKIE['login'])){
-    $profile = $mysql->query("SELECT * FROM `users` WHERE `login` = '$_COOKIE[login]'");
+    $profile = $connection->query("SELECT * FROM `users` WHERE `login` = '$_COOKIE[login]'");
 }else{
-    $profile = $mysql->query("SELECT * FROM `users` WHERE `login` = '$_SESSION[login]'");
+    $profile = $connection->query("SELECT * FROM `users` WHERE `login` = '$_SESSION[login]'");
 }
 $prof = mysqli_fetch_assoc($profile);
 ?>
