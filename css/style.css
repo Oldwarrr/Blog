@@ -1,0 +1,592 @@
+/* Подключение шрифтов */
+@font-face {
+    font-family: 'Merriweather';
+    src: url('../fonts/Merriweather-Bold.woff2') format('woff2'),
+        url('../fonts/Merriweather-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Merriweather';
+    src: url('../fonts/Merriweather-Regular.woff2') format('woff2'),
+        url('../fonts/Merriweather-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+/* Обнуление */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    width: 100%;
+    height: 100%;
+    font-family: Merriweather, sans-serif;
+    
+}
+ul, li{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.wrapper{
+    width: 100%;
+    height: inherit;
+}
+input{
+    margin: 0;
+    width: 100%;
+}
+.ta-right{
+    text-align: right;
+}
+
+.ai-center{
+    display: flex;
+    align-items: center;
+}
+
+
+
+
+/* Стартовая страница */
+.startpage, .startpage__content{
+    height: 100vh;
+}
+.header{
+    color: #fff;
+
+    /* min-height: 300px; */
+}
+.header, .startpage, .header.home{
+    position: relative;
+    width: 100%;
+
+    background:  rgb(0, 0, 0) url('../img/bg4.jpg') 50% 50% no-repeat;
+    background-size: cover;
+
+    z-index: 0;
+}
+.header::after, .startpage::after{
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(32, 32, 32, 0.70);
+    
+    z-index: -1;
+}
+
+
+.header.home{
+    background:  rgb(0, 0, 0) url('../img/bg3.jpg') 50% 50% no-repeat;
+}
+.container{
+    width: 100%;
+    max-width: 1230px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+.container.flex{
+    display: flex;
+    justify-content: space-between;
+}
+.startpage__content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    color: #fff;
+}
+
+.startpage__content h3{
+    font-size: 21px;
+
+    margin-top: 20px;
+}
+.startpage__content h1{
+    font-size: 40px;
+}
+.startpage__content__links{
+    display: flex;
+    justify-content: space-between;
+
+    width: 100%;
+    max-width: 430px;
+    margin-top: 50px;
+    
+    text-align: center;
+}
+.content__links__link {
+    display: block;
+    min-width: 200px;
+
+    padding: 15px 25px;
+
+    font-size: 20px;
+    font-weight: 600;
+    color: #fff;
+    text-align: center;
+    text-decoration:none;
+    
+    border: 4px solid #fff;
+}
+.content__links__link:hover{
+    background-color: rgba(255, 255, 255, 0.301);
+}
+
+
+
+/* Форма */
+.form{
+    width: 100%;
+    max-width: 480px;
+    border: 4px solid rgba(255, 255, 255, 0.61);
+
+    margin-top: 15px;
+    padding: 20px;
+
+    user-select: none;
+}
+.form__item{
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto 15px;
+}
+#name, #login, #password,#repeatpassword, #email, #answer{
+    display: block;
+    height: 30px;
+
+    color: #fff;
+    font-size: 18px;
+
+    margin-top: 8px;
+
+    outline: none;
+    
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.61);
+}
+#name:focus, #login:focus, #password:focus,#repeatpassword:focus, #email:focus, #answer:focus{
+ background-color: rgba(255, 255, 255, 0.267);
+}
+#checkbox{
+    width: fit-content;
+    margin-top: 3px;
+}
+label[for='checkbox']{
+    padding-left: 10px;
+    font-size: 16px;
+}
+.form__item.checkbox__block{
+    display: flex;
+}
+
+/* Styling Checkbox
+
+--------------------------
+--------------------------
+--------------------------
+
+
+*/
+.secretQuestion{
+    display: block;
+    width: 100%;
+    max-width: inherit;
+
+    font-size: 16px;
+
+    padding: 9px;
+
+    outline: none;
+}
+
+.form-transition{
+    display: block;
+    color: rgb(161, 161, 161);
+    font-size: 12px;
+    margin-top: 20px;
+}
+.form-transition:hover{
+    color: rgba(255, 255, 255, 0.788);
+}
+.form__link{
+    display: block;
+    min-width: 150px;
+
+    font-size: 18px;
+
+    margin: 30px auto 0;
+    padding: 10px 15px;
+
+    background-color: #fff;
+    border: none;
+    
+    outline: none;
+    cursor: pointer;
+}
+.form__link:hover{
+    background-color: rgb(212, 212, 212);
+}
+
+/* AlerSuccess */
+.alertSuccess{
+    width: 100%;
+    max-width: 360px;
+
+    line-height: 30px;
+    text-align: center;
+
+    padding: 20px 40px;
+    background-color: rgba(255, 255, 255, 0.534);
+    box-shadow: 0px 0px 41px 28px rgba(255, 255, 255, 0.2);
+    text-shadow: 0px 0px 20px rgba(0, 0, 0, 1);
+}
+
+/* Home */
+
+
+
+.header{
+    display: flex;
+    align-items: center;
+    flex-direction: column-reverse;
+}
+.header__wrap{
+    position: relative;
+    width: 100%;
+}
+.header__wrap::before{
+    position: absolute;
+    content: "";
+    width: 100vw;
+    top: 0;
+    left: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.514);
+}
+.profile {
+    display: flex;
+    align-items: center;
+}
+.profile__logo {
+    width: 70px;
+    height: 70px;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+.profile__info {
+    margin-left: 30px;   
+}
+.header__nav{
+    width: 100%;
+    padding: 25px 15px;
+}
+.header__nav__list, .header__nav__list-category {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 550px;
+
+    margin-left: auto;
+}
+.header__nav__list-category{
+    margin: 0;
+}
+.header__nav:nth-child(2){
+    border-left: 1px solid rgba(255, 255, 255, 0.514);
+    margin-left: 30px;
+}
+.header__nav__list__item {
+    margin: 0 15px;
+}
+.header__nav__list__item__link{
+    color: #fff;
+    text-decoration: none;
+    outline: none;
+}
+.header__nav__list__item__link:hover{
+    color: rgb(199, 199, 199);
+    text-shadow: 0px 0px 20px rgba(255, 255, 255, 1);
+}
+
+
+
+/* Main block */
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    /* padding: 0 15px; */
+}
+.main{
+    width: 100%;
+    max-width: 800px;
+    margin-right: 30px;
+}
+.sidebar{
+    width: 100%;
+    max-width: 400px; 
+}
+.aside{
+    width: inherit;
+    max-width: inherit;
+}
+.main__section,.aside{
+    padding: 20px;
+    margin-top: 30px;
+    background-color: #ececec;
+}
+.aside__picture {
+
+    width: inherit;
+    max-width: inherit;  
+
+    margin-top: 30px;
+}
+.aside__picture > img{
+    max-width: inherit;
+}
+
+/* Articles sections*/
+/* Section top */
+.main__section__top {
+
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+.section__top__view-all {
+    display: block;
+    
+    color: #000;
+
+    text-decoration: none;
+}
+.section__top__view-all:hover{
+    text-decoration: underline;
+}
+
+/* Article */
+.articles-block,.articles-block__content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.articles-block{
+    
+    min-height: 592px;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.title{
+    font-size: 18px;
+    font-weight: 700;
+}
+.title:not(.main__section__top .title){
+    margin-bottom: 10px;
+}
+.articles-block__article {
+    display: flex;
+    width: 50%;
+}
+.w100{
+    width: 100%;
+}
+/* .w100:not(.w100:last-of-type){
+    margin-bottom: 20px;
+} */
+.articles-block__article{
+    margin: 20px 0;
+}
+.articles-block__article:last-child, .articles-block__article:nth-last-child(2){
+    margin-bottom: 0;
+}
+.articles-block__article__picture {
+    flex-basis: 100px;
+    
+    flex-shrink: 0;
+    height: 100px;  /*УБИРАЯ ЭТО СВОЙСТВО И УСТАНАВЛИВАЯ OBJ FIT COVER ДРУГОЙ ЭФФЕКТ, А ТАК СПЛЮСНУТО*/
+}
+.articles-block__article__picture > img{
+    width: inherit;
+    max-width: 100px;
+    /* object-fit: cover;     */   
+    height: inherit;
+}
+.articles-block__article__info{
+
+    margin: 0 15px;
+
+}
+.articles-block__article__title {
+    display: block;
+    /* min-height: 40px; */
+
+    font-size: 16px;
+    font-weight: 700;
+    color: #000;
+
+    text-decoration: none;
+}
+
+a[class='articles-block__article__title']:hover,.articles-block__article__category:hover{
+    color: rgb(104, 57, 57);
+}
+.articles-block__article__category {
+    display: block;
+
+    font-size: 12px;
+    color: #000;
+    margin: 10px 0;
+
+    text-decoration: none;
+}
+.articles-block__article__text {
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+
+/* Article Page */
+.article-pubdate,.article-views {
+    font-family: Arial, Helvetica, sans-serif;
+}
+.article-image {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto;
+}
+.article-title {
+    text-align: center;
+    margin: 30px 0;
+}
+
+
+/* Comment Form */
+
+.comment-form__comment {
+    width: 100%;
+    outline: none;
+    resize: none;
+
+    margin: 15px 0;
+}
+.comment-form__submit {
+    display:  block;
+
+    width: 150px;
+
+    
+    padding: 10px 0;
+    
+    font-size: 16px;
+    color: #fff;
+
+    border: none;
+
+    background-color: rgb(71, 51, 51);
+
+    cursor: pointer;
+    transition:  background-color .3s;
+}
+.comment-form__submit:hover{
+    background-color: #000;
+}
+
+
+
+/* Pagination */
+.pagination{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 35px;
+}
+.pagination__page{
+    display: block;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    color: #000;
+
+    padding: 7px;
+
+    text-decoration: none;
+}
+.active{
+    font-weight: 600;
+    text-decoration: underline;
+}
+.disabled{
+    pointer-events: none;
+    cursor: default;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Styles */
+.ta-left{
+    text-align: left;
+}
+.margTop0{
+    margin-top: 0;
+}
+.fd-row{
+    flex-direction: row;
+    min-height: auto;
+}
+
+
+
+
+
+/* test-php */
+.test-php{
+    position: absolute;
+    top:100px;
+    left: 0;
+
+    width: 100%;
+    max-width: 600px;
+    /* height: auto; */
+    height: 700px;
+
+    padding: 10px;
+
+    color: #000;
+    font-size: 14px;
+
+    background-color: #fff;
+    border: 2px solid #fff;
+
+    z-index: 5;
+}
+
+
+
+
+/* 
+
+Пофиксить лишние margin у статей, не хочет убираться у последних и предпоследних элементов
+
+*/
