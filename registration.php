@@ -86,8 +86,8 @@ $fields =
             
         }else{
             // echo "Заполните все поля!"; // Индикатор исправности
-            header('Location: registration.php');
-            die;
+            // header('Location: registration.php');
+            // die;
          
         }
     }else{
@@ -118,19 +118,19 @@ $fields =
                 ?>
                 <div class="form__item">
                     <label for="name">Введите Имя</label>
-                    <input name="name" id="name" type="text" autocomplete="off" autofocus>
+                    <input name="name" id="name" type="text" autocomplete="off" autofocus value="<?php echo @$fields['name']['value']?>">
                 </div>
                 <div class="form__item">
                     <label for="login">Введите Логин</label>
-                    <input name="login" id="login" type="text" autocomplete="off">
+                    <input name="login" id="login" type="text" autocomplete="off" value="<?php echo @$fields['login']['value']?>">
                 </div>
                 <div class="form__item">
                     <label for="password">Введите пароль</label>
-                    <input name="password" id="password" type="password">
+                    <input name="password" id="password" type="password" value="<?php echo @$fields['password']['value']?>">
                 </div>
                 <div class="form__item">
                     <label for="email">Введите E-mail</label>
-                    <input name="email" id="email" type="email" autocomplete="off">
+                    <input name="email" id="email" type="email" autocomplete="off" value="<?php echo @$fields['email']['value']?>">
                 </div>
                 <div class="form__item">
                     <select name="secretQuestion" class="secretQuestion">

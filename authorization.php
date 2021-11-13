@@ -16,7 +16,6 @@ $fields = [
         'field_name' => 'Пароль'
     ]
 ];
-
 if(isset($_POST['submit'])){
     $fields = loadValue($fields);
     $_SESSION['errors'] = validate($fields);

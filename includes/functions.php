@@ -4,6 +4,7 @@ function pre($arr, $mode = 1){
     $mode == 1 ? print_r($arr) : var_dump($arr);
     echo "</pre>";
 }
+
 //Загрузка данных формы
 function loadValue($data){
     foreach($_POST as $k => $v){
@@ -34,6 +35,9 @@ function validate($data){
     }
     if(isset($data['email']['value']) && strlen($data['email']['value']) > 50){
         $errors .= "<li>- Слишком длинный {$data['email']['field_name']}</li>";
+    }
+    if(isset($data['email']['value']) &&!empty($data['email']['value']) && filter_var($data['email']['value'], FILTER_VALIDATE_EMAIL) == false){
+        $errors .= "<li>- Неверный формат {$data['email']['field_name']}</li>";
     }
     if(isset($data['answer']['value']) && strlen($data['answer']['value']) > 50){
         $errors .= "<li>- Слишком длинный {$data['answer']['field_name']}</li>";
