@@ -29,13 +29,13 @@ if(isset($_POST['submit'])){
             $password = $fields['password']['value'];
             $dbPassword = $connection->query("SELECT `password` FROM `users` WHERE `login` = '$login'");
             $checkPassword = $dbPassword->fetch_assoc();
-            if($password == $checkPassword['password']){
+            if(password_verify($password, $checkPassword['password'])){
                 if(isset($_POST['checkbox'])){
                     setcookie('login',$login,time()+36000,'/');
-                    setcookie('password',$password,time()+36000,'/');
+                    setcookie('password',$checkPassword['password'],time()+36000,'/');
                 }
                 $_SESSION['login'] = $login;
-                $_SESSION['password'] = $password;
+                $_SESSION['password'] = $checkPassword['password'];
                 header('Location: home.php');
                 die;
             }else{

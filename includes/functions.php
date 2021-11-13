@@ -1,8 +1,8 @@
 <?php
 function pre($arr, $mode = 1){
-    // echo "<pre>";
+    echo "<pre>";
     $mode == 1 ? print_r($arr) : var_dump($arr);
-    // echo "</pre>";
+    echo "</pre>";
 }
 //Загрузка данных формы
 function loadValue($data){

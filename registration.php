@@ -53,7 +53,7 @@ $fields =
                 if($checkEmail->num_rows == 0){
 
                     $name = $fields['name']['value'];
-                    $password = $fields['password']['value'];             
+                    $password = password_hash($fields['password']['value'], PASSWORD_DEFAULT);             
                     $secretQuestion = $fields['secretQuestion']['value'];
                     $answer = $fields['answer']['value'];
 
@@ -113,8 +113,7 @@ $fields =
                             <div class='text'>$_SESSION[errors]</div>
                             </div>
                             ";
-                            unset($_SESSION['errors']);
-                            
+                            unset($_SESSION['errors']);   
                         }
                 ?>
                 <div class="form__item">

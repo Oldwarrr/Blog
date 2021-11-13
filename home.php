@@ -292,4 +292,5 @@ if(!empty($_GET) && $_GET['do'] == 'exit'){
 
 <?php
 require_once 'includes/footer.html';
+
 ?>
