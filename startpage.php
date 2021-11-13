@@ -3,10 +3,10 @@ require_once 'includes/config.php';
 require_once 'includes/header.html';
 
 
-if(isset($_COOKIE['login']) && isset($_COOKIE['password'])){
+if(isset($_COOKIE['login'])){
     header('Location: home.php');
     die;
-}elseif(isset($_SESSION['login']) && isset($_SESSION['password'])){
+}elseif(isset($_SESSION['login'])){
     header('Location: home.php');
     die;
 }

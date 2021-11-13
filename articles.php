@@ -11,7 +11,6 @@ if(!isset($_COOKIE['login'])){
 if(isset($_GET['do'])){
     if(!empty($_GET) && $_GET['do'] == 'exit'){
         unset($_SESSION['login']);
-        unset($_SESSION['password']);
         setcookie('login','',time()-36000,'/');
         setcookie('password','',time()-36000,'/');
         header('Location: startpage.php');
