@@ -198,7 +198,7 @@ label[for='checkbox']{
 
 
 */
-.secretQuestion{
+.secretQuestion,.category_list{
     display: block;
     width: 100%;
     max-width: inherit;
@@ -283,7 +283,8 @@ label[for='checkbox']{
     background-color: rgba(255, 255, 255, 0.2);
 }
 .profile__info {
-    margin-left: 30px;   
+    min-width: 100px;
+    margin-left: 30px;  
 }
 .header__nav{
     width: 100%;
@@ -293,7 +294,7 @@ label[for='checkbox']{
     display: flex;
     justify-content: space-between;
     width: 100%;
-    max-width: 550px;
+    max-width: fit-content;
 
     margin-left: auto;
 }
@@ -473,6 +474,7 @@ a[class='articles-block__article__title']:hover,.articles-block__article__catego
 /* Comment Form */
 
 .comment-form__comment {
+    display: block;
     width: 100%;
     outline: none;
     resize: none;
@@ -531,8 +533,24 @@ a[class='articles-block__article__title']:hover,.articles-block__article__catego
 }
 
 
+/* Post_Article Page */
+.category_list,.category_name{
+    display: block;
 
+    max-width: 420px;
+    
 
+    margin: 15px 0;
+
+    outline: none;
+}
+.category_name{
+    height: 30px;
+}
+.post_article_image{
+    width: auto;
+    margin-left: 15px;
+}
 
 
 
@@ -551,11 +569,17 @@ a[class='articles-block__article__title']:hover,.articles-block__article__catego
 .margTop0{
     margin-top: 0;
 }
+.marg15_0{
+    display: block;
+    margin: 15px 0;
+}
 .fd-row{
     flex-direction: row;
     min-height: auto;
 }
-
+.color-brown{
+    color: brown;
+}
 
 
 

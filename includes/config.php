@@ -13,16 +13,23 @@ $config = [
 
     'admin' => [
         'username' => [
-            'admin',
-            'Alex'
+           
+            'Alex',
+            'Oldwarr'
             ]
     ]
 ];
 
 require_once 'includes/db.php';
+
+// Проверка на права администратора у пользователя
+$admin = 0;
 if(isset($_SESSION['login'])){
     if(in_array($_SESSION['login'], $config['admin']['username'])){
-        echo "Ты админ";
+        $admin = 1;
+    }
+    else {
+        $admin = 0;
     }
 }
 

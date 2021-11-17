@@ -1,27 +1,8 @@
 <?php
 require_once 'includes/config.php';
 require_once 'includes/header.html';
-
-if(!isset($_COOKIE['login'])){
-    if(!isset($_SESSION['login'])){
-        header('Location: startpage.php');
-        die;
-    }
-}
-if(!empty($_GET) &&  isset($_GET['do'])){
-    if($_GET['do'] == 'exit'){
-        unset($_SESSION['login']);
-    setcookie('login','',time()-36000,'/');
-    setcookie('password','',time()-36000,'/');
-    header('Location: startpage.php');
-    die;
-    }
-}
-?>
-
-<?php include 'includes/header.php';
-
-
+require_once 'includes/check_login_and_exit.php';
+include 'includes/header.php';
 ?>
 
 <!-- Проверка существования страницы -->
@@ -57,6 +38,20 @@ if(!empty($_GET) &&  isset($_GET['do'])){
 
 
 
+<!-- Удаление статьи -->
+<?php
+
+    if(isset($_GET['delete']) &&($admin == 1 || $prof['id'] == $author_id['author_id'])){
+        $connection->query("DELETE FROM `comments` WHERE `articles_id` = '$art[id]'");
+        $connection->query("DELETE FROM `articles` WHERE `id` = '$art[id]'");
+        header("Location: home.php");
+        exit;
+    }
+?>
+
+
+
+
 <div class="container">
     <div class="flex-container">
 
@@ -68,7 +63,13 @@ if(!empty($_GET) &&  isset($_GET['do'])){
 
                 <div class="main__section__top">
                     <div class="article-pubdate"><?=$art['pubdate']?></div>
-                    <div class="article-views"><?=$art['views']?> просмотров</div>
+                    <div>
+                        <?php
+                         if($admin == 1 || $prof['id'] == $author_id['author_id']):?>
+                        <div class="delete"><a href="article.php?id=<?=$art['id']?>&delete=true">Удалить статью</a></div>
+                        <?php endif?>
+                        <div class="article-views"><?=$art['views']?> просмотров</div>
+                    </div>
                 </div>
                 <img class="article-image" src="img/<?=$art['image']?>" alt="">
                 <h1 class="article-title"><?=$art['title']?></h1>

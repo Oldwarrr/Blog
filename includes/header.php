@@ -12,6 +12,9 @@ if(isset($_COOKIE['login'])){
     $profile = $connection->query("SELECT * FROM `users` WHERE `login` = '$_SESSION[login]'");
 }
 $prof = mysqli_fetch_assoc($profile);
+if(isset($_GET['id'])){  
+    $author_id = mysqli_fetch_assoc($connection->query("SELECT `author_id` FROM `articles` WHERE `id` = '$_GET[id]'"));
+}
 ?>
 
 
@@ -19,7 +22,16 @@ $prof = mysqli_fetch_assoc($profile);
     <div class="container flex">
         <div class="profile">
             <div class="profile__logo"></div>
-            <div class="profile__info"><?=$prof['name']?></div>
+
+            <div class="profile__info">
+                <?php
+                echo $prof['name'];
+                if($admin == 1){
+                    echo " (A)";
+                }
+                ?>
+            </div>
+
             </div>
             <nav class="header__nav">
             <ul class="header__nav__list-category">
@@ -36,6 +48,10 @@ $prof = mysqli_fetch_assoc($profile);
                 <?php
                     }
                 ?>
+
+                <li class="header__nav__list__item">
+                    <a href="post_article.php" class="header__nav__list__item__link">Опубликовать статью</a>
+                </li>
             </ul>
         </nav>
     </div>
