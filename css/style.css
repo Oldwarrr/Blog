@@ -114,9 +114,13 @@ input{
 .startpage__content h1{
     font-size: 40px;
 }
+.startpage__content h1,.startpage__content h3{
+    text-align: center;
+}
 .startpage__content__links{
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
 
     width: 100%;
     max-width: 430px;
@@ -128,6 +132,7 @@ input{
     display: block;
     min-width: 200px;
 
+    margin: 0 auto 20px;
     padding: 15px 25px;
 
     font-size: 20px;
@@ -570,6 +575,63 @@ a[class='articles-block__article__title']:hover,.articles-block__article__catego
 
 
 
+/* Media */
+
+@media screen and (max-width: 1024px) {
+    .aside__picture,.aside.last-comments{
+        display: none;
+    }
+    .flex-container{
+        flex-direction: column;
+    }
+    .sidebar{
+        order: -1;
+    }
+    .sidebar, .main{
+        max-width: 100%;
+    }
+    .aside.art-top{
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .aside.art-top .title{
+        width: 100%;
+    }
+    .articles-block__article{
+        width: 50%;
+    }
+    .header__nav__list-category{
+        flex-wrap: wrap;
+    }
+    
+}
+@media screen and (max-width:976px) {
+    .post_article_link{
+        display: block;
+        margin-top: 20px;
+    }
+}
+@media screen and (max-width: 597px) {
+    .articles-block__article{
+        width: 100%;
+    }
+    .header__nav__list{
+        flex-wrap: wrap;
+    }
+    .container.flex{
+        flex-direction: column;
+    }
+    .header__nav:nth-child(2){
+        margin: 0;
+        border: none;
+    }
+}
+
+
+
+
+
+
 
 
 /* Styles */
@@ -593,6 +655,30 @@ a[class='articles-block__article__title']:hover,.articles-block__article__catego
 .form-comments > li, .form-post-article > li{
     color: brown;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -621,8 +707,3 @@ a[class='articles-block__article__title']:hover,.articles-block__article__catego
 
 
 
-/* 
-
-Пофиксить лишние margin у статей, не хочет убираться у последних и предпоследних элементов
-
-*/
