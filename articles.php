@@ -179,13 +179,13 @@ if(isset($_GET['category'])){
                     <?php
                     
                         if(isset($_GET['category'])){
-                            echo " категории -" . $categories[$_GET['category'] - 1]['title'];
+                            echo " категории - " . $categories[$_GET['category'] - 1]['title'];
                         }
                     
                     ?>
                     </div>
                 </div>
-                <div class="articles-block">
+                <div class="articles-block" style="<?php echo ($pageCount < 2) ? 'min-height:auto;' : ''?>">
 
                     <?php
                         // $articles_category = $connection->query("SELECT * FROM `articles` WHERE `id` = " . (int)$_GET['category']);
@@ -211,15 +211,28 @@ if(isset($_GET['category'])){
                         // }else{
                         //     $articles = $connection->query("SELECT * FROM `articles` ORDER BY `id` DESC LIMIT $start,$limit");
                         // }
-                    
-                        while($art = mysqli_fetch_assoc($articles))
                         
-                        {      
+
+
+
+
+
+
+
+                        if($count != 0){
+                            while($art = mysqli_fetch_assoc($articles))
+                            
+                            {     
+                            
+                            
+
+
+                            
                     ?>
 
                     <div class="articles-block__article">
                         <div class="articles-block__article__picture">
-                            <img src="img/<?=$art['image']?>" alt="">
+                            <img src="uploads/<?=$art['image']?>" alt="">
                         </div>
                         <div class="articles-block__article__info">
                             <a class="articles-block__article__title" href="article.php?id=<?=$art['id']?>"><?=$art['title']?></a>
@@ -237,7 +250,9 @@ if(isset($_GET['category'])){
                         </div>
                     </div>
                     <?php
-                    
+                            }
+                        }else {
+                            echo "Нет статей в этой категории";
                         }
                         // }
                     ?>

@@ -32,7 +32,7 @@ include 'includes/header.php';
 
                     <div class="articles-block__article">
                         <div class="articles-block__article__picture">
-                            <img src="img/<?=$art['image']?>" alt="">
+                            <img src="uploads/<?=$art['image']?>" alt="">
                         </div>
                         <div class="articles-block__article__info">
                             <a class="articles-block__article__title" href="article.php?id=<?=$art['id']?>"><?=$art['title']?></a>
@@ -62,6 +62,13 @@ include 'includes/header.php';
             </section>
 
 
+            <?php
+
+            $count = $connection->query("SELECT * FROM `articles` WHERE `category_id` = 1");
+            if(mysqli_num_rows($count) != 0) : 
+
+            ?>
+
             <!-- Последние в  HTML&CSS-->
             <section class="main__section art-html">
                 <div class="main__section__top">
@@ -82,7 +89,7 @@ include 'includes/header.php';
 
                     <div class="articles-block__article">
                         <div class="articles-block__article__picture">
-                            <img src="img/<?=$art['image']?>" alt="">
+                            <img src="uploads/<?=$art['image']?>" alt="">
                         </div>
                         <div class="articles-block__article__info">
                             <a class="articles-block__article__title" href="article.php?id=<?=$art['id']?>"><?=$art['title']?></a>
@@ -109,9 +116,17 @@ include 'includes/header.php';
 
                 </div>  
             </section>
+            <?php endif ?>
 
+            
 
+            <?php
 
+            $count = $connection->query("SELECT * FROM `articles` WHERE `category_id` = 2");
+            if(mysqli_num_rows($count) != 0) : 
+                
+            ?>
+            
             <!-- Последние в PHP -->
             <section class="main__section art-php">
                 <div class="main__section__top">
@@ -132,7 +147,7 @@ include 'includes/header.php';
 
                     <div class="articles-block__article">
                         <div class="articles-block__article__picture">
-                            <img src="img/<?=$art['image']?>" alt="">
+                            <img src="uploads/<?=$art['image']?>" alt="">
                         </div>
                         <div class="articles-block__article__info">
                             <a class="articles-block__article__title" href="article.php?id=<?=$art['id']?>"><?=$art['title']?></a>
@@ -160,7 +175,16 @@ include 'includes/header.php';
                 </div>
             </section>
 
+            <?php endif ?>
 
+
+
+            <?php
+
+            $count = $connection->query("SELECT * FROM `articles` WHERE `category_id` = 3");
+            if(mysqli_num_rows($count) != 0) : 
+                
+            ?>
 
             <!-- Последние в JavaScript-->
             <section class="main__section art-js">
@@ -182,7 +206,7 @@ include 'includes/header.php';
 
                     <div class="articles-block__article">
                         <div class="articles-block__article__picture">
-                            <img src="img/<?=$art['image']?>" alt="">
+                            <img src="uploads/<?=$art['image']?>" alt="">
                         </div>
                         <div class="articles-block__article__info">
                             <a class="articles-block__article__title" href="article.php?id=<?=$art['id']?>"><?=$art['title']?></a>
@@ -210,7 +234,16 @@ include 'includes/header.php';
                 </div>               
             </section>
 
+            <?php endif ?>
 
+
+
+            <?php
+
+            $count = $connection->query("SELECT * FROM `articles` WHERE `category_id` = 4");
+            if(mysqli_num_rows($count) != 0) : 
+                
+            ?>
 
             <!-- Последние в Безопасность -->
             <section class="main__section art-secure">
@@ -232,7 +265,7 @@ include 'includes/header.php';
 
                     <div class="articles-block__article">
                         <div class="articles-block__article__picture">
-                            <img src="img/<?=$art['image']?>" alt="">
+                            <img src="uploads/<?=$art['image']?>" alt="">
                         </div>
                         <div class="articles-block__article__info">
                             <a class="articles-block__article__title" href="article.php?id=<?=$art['id']?>"><?=$art['title']?></a>
@@ -259,6 +292,8 @@ include 'includes/header.php';
 
                 </div>   
             </section>
+
+            <?php endif ?>
             
 
         </main>

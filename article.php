@@ -25,7 +25,7 @@ include 'includes/header.php';
         if(!empty($_POST['comment'])){
             $connection->query("INSERT INTO `comments`(`author`,`text`,`articles_id`) VALUES('$prof[name]','$_POST[comment]','$art[id]')");
         }else{
-            $_SESSION['errors'] .= '<span style="display:block;color:red; margin-top:10px;">Заполните поле комментария!</span>';
+            $_SESSION['errors'] .= '<span style="display:block;color:brown; margin-top:10px;">Заполните поле комментария!</span>';
             
         }
         header("Location: article.php?id=$art[id]");
@@ -33,7 +33,6 @@ include 'includes/header.php';
     }else{
         
     }
-
 ?>
 
 
@@ -43,6 +42,7 @@ include 'includes/header.php';
 
     if(isset($_GET['delete']) &&($admin == 1 || $prof['id'] == $author_id['author_id'])){
         $connection->query("DELETE FROM `comments` WHERE `articles_id` = '$art[id]'");
+        unlink("uploads/" . $art['image']);
         $connection->query("DELETE FROM `articles` WHERE `id` = '$art[id]'");
         header("Location: home.php");
         exit;
@@ -66,12 +66,12 @@ include 'includes/header.php';
                     <div>
                         <?php
                          if($admin == 1 || $prof['id'] == $author_id['author_id']):?>
-                        <div class="delete"><a href="article.php?id=<?=$art['id']?>&delete=true">Удалить статью</a></div>
+                        <div class="delete"><a class="color-brown" href="article.php?id=<?=$art['id']?>&delete=true">Удалить статью</a></div>
                         <?php endif?>
                         <div class="article-views"><?=$art['views']?> просмотров</div>
                     </div>
                 </div>
-                <img class="article-image" src="img/<?=$art['image']?>" alt="">
+                <img class="article-image" src="uploads/<?=$art['image']?>" alt="">
                 <h1 class="article-title"><?=$art['title']?></h1>
                 <p class="article-text"><?=nl2br($art['text'])?></p>           
                  
@@ -138,7 +138,7 @@ include 'includes/header.php';
             <!-- Form -->
             <section class="main__section"  id="comment-block" >
                 
-                <form action="article.php?id=<?=$art['id']?>#comments" method="POST">
+                <form class="form-comments" action="article.php?id=<?=$art['id']?>#comments" method="POST">
                     <p class="articles-block__article__title">Добавьте Ваш комментарий :</p>
 
                     <!-- Вывод ошибки о пустом textarea -->

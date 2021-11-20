@@ -50,7 +50,7 @@ if(isset($_GET['id'])){
                 ?>
 
                 <li class="header__nav__list__item">
-                    <a href="post_article.php" class="header__nav__list__item__link">Опубликовать статью</a>
+                    <a href="post_article.php" class="header__nav__list__item__link post_article_link">Опубликовать статью</a>
                 </li>
             </ul>
         </nav>
@@ -72,7 +72,7 @@ if(isset($_GET['id'])){
                     <a href="https://vk.com/id99243211" class="header__nav__list__item__link" target="_blank">ВКонтакте</a>
                 </li>
                 <li class="header__nav__list__item">
-                    <a href="https://github.com/Oldwarrr" class="header__nav__list__item__link" target="_blank">GitHub</a>
+                    <a href="https://github.com/Oldwarrr?tab=repositories" class="header__nav__list__item__link" target="_blank">GitHub</a>
                 </li>
                 <li class="header__nav__list__item">
                     <a href="home.php?do=exit" class="header__nav__list__item__link">Выход</a>             

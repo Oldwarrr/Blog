@@ -72,7 +72,7 @@ if(isset($_POST['submit'])){
                 <h1 class="article-title">Новая статья</h1>
 
 
-                <form action="" method="POST" enctype="multipart/form-data">
+                <form class="form-post-article" action="" method="POST" enctype="multipart/form-data">
 
                     <!-- Вывод ошибки -->
                     <?php

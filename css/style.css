@@ -317,6 +317,16 @@ label[for='checkbox']{
     color: rgb(199, 199, 199);
     text-shadow: 0px 0px 20px rgba(255, 255, 255, 1);
 }
+.post_article_link{
+    background-color: rgba(24, 150, 76, 0.89);
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 15px rgb(78, 153, 43);
+}
+.post_article_link:hover{
+    color: #fff;
+    box-shadow: 0px 0px 30px rgb(78, 153, 43);
+}
 
 
 
@@ -383,7 +393,7 @@ label[for='checkbox']{
 }
 .articles-block{
     
-    min-height: 592px;
+    min-height: 500px;
     flex-direction: column;
     justify-content: space-between;
 }
@@ -580,7 +590,9 @@ a[class='articles-block__article__title']:hover,.articles-block__article__catego
 .color-brown{
     color: brown;
 }
-
+.form-comments > li, .form-post-article > li{
+    color: brown;
+}
 
 
 

@@ -18,7 +18,7 @@ function validate($data){
     $errors = '';
     foreach($data as $k => $v){
         if(empty($data[$k]['value'])){
-            $errors .= "<li class='color-brown'>- Вы не заполнили поле {$data[$k]['field_name']}</li>";
+            $errors .= "<li>- Вы не заполнили поле {$data[$k]['field_name']}</li>";
         }
     }
     if(isset($data['name']['value']) && strlen($data['name']['value']) > 50){

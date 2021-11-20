@@ -1,4 +1,4 @@
-<aside class="aside__picture"><img src="img/img.jpg" alt="IMG"></aside>
+<aside class="aside__picture"><img src="img/img.jpg" alt="IMG"></aside> <!-- Картинка в сайдбаре-->
 
 
             <!-- Топ статей -->
@@ -13,7 +13,7 @@
                     ?>
                 <div class="articles-block__article w100">
                     <div class="articles-block__article__picture">
-                        <img src="img/<?=$art['image']?>" alt="">
+                        <img src="uploads/<?=$art['image']?>" alt="">
                     </div>
                     <div class="articles-block__article__info">
                             <a class="articles-block__article__title" href="article.php?id=<?=$art['id']?>"><?=$art['title']?></a>
@@ -49,7 +49,7 @@
                     ?>
                 <div class="articles-block__article w100">
                     <div class="articles-block__article__picture">
-                        <img src="img/comment.jpg" alt="">
+                        <img src="img/comment.jpg" alt=""> <!--Заглушка аватарки пользователей в комментариях-->
                     </div>
                     <div class="articles-block__article__info">
                             <a class="articles-block__article__title" href="article.php?id=<?=$comment['articles_id']?>"><?=$comment['author']?></a>
