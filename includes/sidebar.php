@@ -49,7 +49,31 @@
                     ?>
                 <div class="articles-block__article w100">
                     <div class="articles-block__article__picture">
-                        <img src="img/comment.jpg" alt=""> <!--Заглушка аватарки пользователей в комментариях-->
+                    
+
+
+
+                    <?php
+                        $authorAvatar = $connection->query("SELECT `avatar` FROM `users` WHERE `id` = '$comment[author_id]'");
+                        $avatar = mysqli_fetch_assoc($authorAvatar);
+                        if(!empty($avatar['avatar'])){
+                    ?>
+                        <img src="img/avatars/<?=$avatar['avatar']?>" alt="">
+                    <?php
+                        }else{
+                    ?>
+                        <img src="img/no_avatar.png" alt="">
+                    <?php
+                        }
+                    ?>
+
+
+
+
+
+
+
+
                     </div>
                     <div class="articles-block__article__info">
                             <a class="articles-block__article__title" href="article.php?id=<?=$comment['articles_id']?>"><?=$comment['author']?></a>

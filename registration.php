@@ -36,7 +36,7 @@ $fields =
     <?php
     // pre($_POST);
 
-
+    
 
     if(isset($_POST['submit'])){
         $fields = loadValue($fields);
@@ -56,16 +56,19 @@ $fields =
                     $password = password_hash($fields['password']['value'], PASSWORD_DEFAULT);             
                     $secretQuestion = $fields['secretQuestion']['value'];
                     $answer = $fields['answer']['value'];
+                    $regdate = date('d/m/Y');
+                    
 
                     // Сохранение в БД
-                    $registration = $connection->query("INSERT INTO `users`(`name`, `login`, `password`, `email`, `question`, `answer`) 
+                    $registration = $connection->query("INSERT INTO `users`(`name`, `login`, `password`, `email`, `question`, `answer`,`reg_date`) 
                     VALUES(
                         '$name',
                         '$login',
                         '$password',
                         '$email',
                         '$secretQuestion',
-                        '$answer'     
+                        '$answer',
+                        '$regdate'     
                         )");
                     
                     // Редирект на страницу-оповещение

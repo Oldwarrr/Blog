@@ -15,22 +15,29 @@ $prof = mysqli_fetch_assoc($profile);
 if(isset($_GET['id'])){  
     $author_id = mysqli_fetch_assoc($connection->query("SELECT `author_id` FROM `articles` WHERE `id` = '$_GET[id]'"));
 }
+// Count of user`s articles
+$personalArticlesCount = $connection->query("SELECT * FROM `articles` WHERE `author_id` = '$prof[id]'");
+$persArtCount = mysqli_num_rows($personalArticlesCount);
+// Count of user`s comments
+$personalCommentsCount = $connection->query("SELECT * FROM `comments` WHERE `author_id` = '$prof[id]'");
+$persComCount = mysqli_num_rows($personalCommentsCount);
+
 ?>
 
 
 <header class="header home">
     <div class="container flex">
         <div class="profile">
-            <div class="profile__logo"></div>
+            <div class="profile__logo"><img class="profile__logo__image" src="/img/<?php echo !empty($prof['avatar']) ? 'avatars/' . $prof['avatar'] : "no_avatar.png" ?>" alt=""></div>
 
-            <div class="profile__info">
+            <a href="profile-info.php" class="profile__info">
                 <?php
                 echo $prof['name'];
                 if($admin == 1){
                     echo " (A)";
                 }
                 ?>
-            </div>
+            </a>
 
             </div>
             <nav class="header__nav">

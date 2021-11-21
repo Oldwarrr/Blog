@@ -23,7 +23,8 @@ include 'includes/header.php';
     if(isset($_POST['submit'])){
         $_SESSION['errors'] = '';
         if(!empty($_POST['comment'])){
-            $connection->query("INSERT INTO `comments`(`author`,`text`,`articles_id`) VALUES('$prof[name]','$_POST[comment]','$art[id]')");
+            $date = date('d/m/Y H:i');
+            $connection->query("INSERT INTO `comments`(`author`,`author_id`,`text`,`pubdate`,`articles_id`) VALUES('$prof[name]','$prof[id]','$_POST[comment]','$date','$art[id]')");
         }else{
             $_SESSION['errors'] .= '<span style="display:block;color:brown; margin-top:10px;">Заполните поле комментария!</span>';
             
@@ -116,10 +117,30 @@ include 'includes/header.php';
 
                     <div class="articles-block__article w100">
                         <div class="articles-block__article__picture">
-                            <img src="img/comment.jpg" alt="">
+                        
+
+
+
+                    <?php
+                        $authorAvatar = $connection->query("SELECT `avatar` FROM `users` WHERE `id` = '$comment[author_id]'");
+                        $avatar = mysqli_fetch_assoc($authorAvatar);
+                        if(!empty($avatar['avatar'])){
+                    ?>
+                        <img src="img/avatars/<?=$avatar['avatar']?>" alt="">
+                    <?php
+                        }else{
+                    ?>
+                        <img src="img/no_avatar.png" alt="">
+                    <?php
+                        }
+                    ?>
+
+                    
+                            
                         </div>
                         <div class="articles-block__article__info">
                                 <a class="articles-block__article__title" href="article.php?id=<?=$comment['articles_id']?>"><?=$comment['author']?></a>
+                                <span><?=$comment['pubdate']?></span>
                                 <p class="articles-block__article__text"><?=nl2br($comment['text'])?></p>
                             </div> 
                     </div>

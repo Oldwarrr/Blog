@@ -287,9 +287,21 @@ label[for='checkbox']{
     height: 70px;
     background-color: rgba(255, 255, 255, 0.2);
 }
+.profile__logo__image{
+    width: 100%;
+}
 .profile__info {
+    display: block;
     min-width: 100px;
-    margin-left: 30px;  
+    margin-left: 30px;
+
+    color: #fff;
+
+    text-decoration: none;
+}
+.profile__info:hover{
+    color: rgb(199, 199, 199);
+    text-shadow: 0px 0px 20px rgb(255 255 255);
 }
 .header__nav{
     width: 100%;
@@ -472,7 +484,7 @@ a[class='articles-block__article__title']:hover,.articles-block__article__catego
 
 
 /* Article Page */
-.article-pubdate,.article-views {
+.article-pubdate,.article-views,.articles-block__article__info span {
     font-family: Arial, Helvetica, sans-serif;
 }
 .article-image {
@@ -573,6 +585,116 @@ a[class='articles-block__article__title']:hover,.articles-block__article__catego
 
 
 
+/* Profile */
+.profile-block{
+    display: flex;
+    margin-top: 30px;
+    padding: 20px;
+
+
+    background-color: #ececec;
+
+}
+
+/* Sidebar */
+.profile__sidebar{
+    width: 100%;
+    max-width: 210px;
+    padding: 5px;
+    border: 1px solid #929292;
+
+}
+.profile__sidebar__images{
+    width: 100%;
+    max-width: 30px;
+    padding-right: 7px;
+    vertical-align: middle;
+}
+.profile__menu__item:not(:last-of-type){
+    margin-bottom: 20px;
+}
+.profile__menu__link{
+    color: #000;
+    text-decoration: none;  
+}
+.profile__menu__link:hover{
+    text-decoration: underline;  
+}
+
+/* Main */
+.profile__main{
+    display: flex;
+    justify-content: space-between;
+
+    width: 100%;
+
+    padding: 5px 5px 5px 25px;
+    margin-left: -1px;
+
+    border: 1px solid #929292;
+}
+.profile__main__info__item{
+    font-weight: 400;
+    margin-top: 10px;
+}
+.profile__main__avatar{
+    width: 100%;
+    max-width: 310px;
+}
+
+
+/* Articles */
+.myarticles, .mycomments{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+
+
+
+
+
+
+
+/* Comments */
+.mycomments__article-image{
+    display: flex;
+    
+    width: 100px;
+    height: 100px;
+
+    margin-right: 20px;
+
+    border-radius: 5px;
+    overflow: hidden;
+}
+.mycomments__article-image img{
+    width: 100%;
+}
+.mycomments .articles-block__article.w100{
+    width: auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /* Media */
@@ -654,6 +776,9 @@ a[class='articles-block__article__title']:hover,.articles-block__article__catego
 }
 .form-comments > li, .form-post-article > li{
     color: brown;
+}
+.bold{
+    font-weight: 700;
 }
 
 
