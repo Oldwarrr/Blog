@@ -15,22 +15,42 @@ $prof = mysqli_fetch_assoc($profile);
 
 
 // Изменение аватарки профиля
-if(isset($_POST['upload_image'])){
+
+
+// Допустимые форматы файла картинки
+$img_type = ["image/png","image/jpeg","image/gif"];
+
+
+if(isset($_POST['upload_image'])){ //Кнопка отправки
     $file_name = $_FILES['avatar']['name'];
-    if(!empty($file_name)){
-        if(!is_null($prof['avatar'])){
-            unlink("img/avatars/" . $prof['avatar']);
+    $file_error = $_FILES['avatar']['error'];
+    $file_type = $_FILES['avatar']['type'];
+    $file_size = $_FILES['avatar']['size'];
+    $file_max_size = 5242880; // Max Size  = 5 MB
+    
+
+        if($file_error == 0){ // Нет ошибок
+            if(!empty(array_search($file_type,$img_type)) || array_search($file_type,$img_type) == 0){ //Проверка формата файла
+                if($file_size < $file_max_size){ // Проверка размера файла
+                    if(!is_null($prof['avatar'])){
+                        unlink("img/avatars/" . $prof['avatar']);
+                    }
+                    $nameAvatar = $_FILES['avatar']['name'];
+                    move_uploaded_file($_FILES['avatar']['tmp_name'], "img/avatars/" . $nameAvatar);
+                    $uploadAvatar = $connection->query("UPDATE `users` SET `avatar` = '$nameAvatar' WHERE `id` = '$prof[id]'");
+                }else{
+                    $_SESSION['file_error'] = "Слишком большой файл!";
+                }
+            }else{
+                $_SESSION['file_error'] = "Неподходящий формат файла!";
+            }       
+        }elseif($file_error == 4) { // Ошибка №4
+            $_SESSION['file_error'] = "Выберете картинку!";
         }
-        $nameAvatar = $_FILES['avatar']['name'];
-        move_uploaded_file($_FILES['avatar']['tmp_name'], "img/avatars/" . $nameAvatar);
-        $uploadAvatar = $connection->query("UPDATE `users` SET `avatar` = '$nameAvatar' WHERE `id` = '$prof[id]'");
-        
-    }else {
-        $_SESSION['file_error'] = "Выберете картинку!";
-    }
     header("Location: profile-info.php");
-    die;
+    die;   
 }
+
 
 if(isset($_GET['id'])){  
     $author_id = mysqli_fetch_assoc($connection->query("SELECT `author_id` FROM `articles` WHERE `id` = '$_GET[id]'"));

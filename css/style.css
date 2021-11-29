@@ -38,8 +38,8 @@ ul, li{
     height: inherit;
 }
 input{
-    margin: 0;
     width: 100%;
+    margin: 0;
 }
 .ta-right{
     text-align: right;
@@ -285,10 +285,14 @@ label[for='checkbox']{
 .profile__logo {
     width: 70px;
     height: 70px;
+
+    overflow: hidden;
+
     background-color: rgba(255, 255, 255, 0.2);
 }
 .profile__logo__image{
     width: 100%;
+    height: inherit;
 }
 .profile__info {
     display: block;
@@ -742,9 +746,9 @@ a[class='articles-block__article__title']:hover,.articles-block__article__catego
 .mycomments__article-image img{
     width: 100%;
 }
-.mycomments .articles-block__article.w100{
+/* .mycomments .articles-block__article.w100{
     width: auto;
-}
+} */
 
 
 
