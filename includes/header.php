@@ -12,6 +12,26 @@ if(isset($_COOKIE['login'])){
     $profile = $connection->query("SELECT * FROM `users` WHERE `login` = '$_SESSION[login]'");
 }
 $prof = mysqli_fetch_assoc($profile);
+
+
+// Изменение аватарки профиля
+if(isset($_POST['upload_image'])){
+    $file_name = $_FILES['avatar']['name'];
+    if(!empty($file_name)){
+        if(!is_null($prof['avatar'])){
+            unlink("img/avatars/" . $prof['avatar']);
+        }
+        $nameAvatar = $_FILES['avatar']['name'];
+        move_uploaded_file($_FILES['avatar']['tmp_name'], "img/avatars/" . $nameAvatar);
+        $uploadAvatar = $connection->query("UPDATE `users` SET `avatar` = '$nameAvatar' WHERE `id` = '$prof[id]'");
+        
+    }else {
+        $_SESSION['file_error'] = "Выберете картинку!";
+    }
+    header("Location: profile-info.php");
+    die;
+}
+
 if(isset($_GET['id'])){  
     $author_id = mysqli_fetch_assoc($connection->query("SELECT `author_id` FROM `articles` WHERE `id` = '$_GET[id]'"));
 }

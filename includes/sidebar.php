@@ -1,4 +1,4 @@
-<aside class="aside__picture"><img src="img/img.jpg" alt="IMG"></aside> <!-- Картинка в сайдбаре-->
+<aside class="aside__picture"><img src="img/img.jpg" alt="IMG"></aside> Картинка в сайдбаре
 
 
             <!-- Топ статей -->
