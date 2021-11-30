@@ -500,6 +500,18 @@ a[class='articles-block__article__title']:hover,.articles-block__article__catego
     text-align: center;
     margin: 30px 0;
 }
+.delete_comment-link{
+    display: block;
+    height: fit-content;
+    color: brown;
+    margin-left: auto;
+    text-decoration: none;
+}
+.delete_comment-link:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
+
 
 
 /* Comment Form */

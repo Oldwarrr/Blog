@@ -3,23 +3,24 @@ require_once 'includes/config.php';
 require_once 'includes/header.html';
 require_once 'includes/check_login_and_exit.php';
 include 'includes/header.php';
-?>
 
-<!-- Проверка существования страницы -->
-<?php
+
+//Проверка существования страницы
+
     $article = $connection->query("SELECT * FROM `articles` WHERE `id` = " . (int)$_GET['id']);
     if(mysqli_num_rows($article) <= 0){
         echo 'Статья не найдена';
-    }else 
-    
-    {
+    }else{
     $art = mysqli_fetch_assoc($article);
-    // Счетчик просмотров
-    $connection->query("UPDATE `articles` SET `views` = `views` + 1 WHERE `id` =" . (int)$art['id']);
-?>
 
-<!-- Добавление комментария -->
-<?php                     
+
+// Счетчик просмотров
+
+    $connection->query("UPDATE `articles` SET `views` = `views` + 1 WHERE `id` =" . (int)$art['id']);
+
+
+//Добавление комментария
+                   
     if(isset($_POST['submit'])){
         $_SESSION['errors'] = '';
         if(!empty($_POST['comment'])){
@@ -31,15 +32,10 @@ include 'includes/header.php';
         }
         header("Location: article.php?id=$art[id]");
             exit;
-    }else{
-        
     }
-?>
 
 
-
-<!-- Удаление статьи -->
-<?php
+//Удаление статьи
 
     if(isset($_GET['delete']) &&($admin == 1 || $prof['id'] == $author_id['author_id'])){
         $connection->query("DELETE FROM `comments` WHERE `articles_id` = '$art[id]'");
@@ -48,10 +44,23 @@ include 'includes/header.php';
         header("Location: home.php");
         exit;
     }
+
+
+//Удаление комментария
+
+    if(isset($_GET['comment_id'])){
+        $author_comment_data = $connection->query("SELECT `author_id` FROM `comments` WHERE `id` = '$_GET[comment_id]'");
+        $author_comment = mysqli_fetch_assoc($author_comment_data);
+    }
+     if(isset($_GET['delete_comment'])  && ($admin == 1 || $prof['id'] == $author_comment['author_id'])){
+        $connection->query("DELETE FROM `comments` WHERE `id` = '$_GET[comment_id]'");
+        header("Location: article.php?id=$art[id]");
+        exit;    
+    }
 ?>
 
 
-
+<!-- Контент -->
 
 <div class="container">
     <div class="flex-container">
@@ -81,12 +90,8 @@ include 'includes/header.php';
             <section class="main__section" id="comments">
             
                 <div class="main__section__top" >
-                    
 
-                    
-
-
-                    <!-- Проверка наличия комментариев -->
+<!-- Проверка наличия комментариев -->
                     <?php
                         $comments = $connection->query("SELECT * FROM `comments` WHERE `articles_id` =  {$art['id']} ORDER BY `id` DESC");
                         if(mysqli_num_rows($comments) > 0){
@@ -108,8 +113,7 @@ include 'includes/header.php';
 
                 </div>  
 
-
-                    <!-- Вывод комментариев -->
+<!-- Вывод комментариев -->
                     <?php
                         while($comment = mysqli_fetch_assoc($comments))  
                         {      
@@ -117,9 +121,6 @@ include 'includes/header.php';
 
                     <div class="articles-block__article w100">
                         <div class="articles-block__article__picture">
-                        
-
-
 
                     <?php
                         $authorAvatar = $connection->query("SELECT `avatar` FROM `users` WHERE `id` = '$comment[author_id]'");
@@ -135,34 +136,37 @@ include 'includes/header.php';
                         }
                     ?>
 
-                    
-                            
                         </div>
+
                         <div class="articles-block__article__info">
                                 <a class="articles-block__article__title" href="article.php?id=<?=$comment['articles_id']?>"><?=$comment['author']?></a>
                                 <span><?=$comment['pubdate']?></span>
                                 <p class="articles-block__article__text"><?=nl2br($comment['text'])?></p>
                             </div> 
+                            <?php
+                                if($admin == 1 || $prof['id'] == $comment['author_id'])
+                                {
+                            ?>
+                            <a href="article.php?id=<?="$art[id]&delete_comment=true&comment_id=$comment[id]"?>" class="delete_comment-link">Удалить</a>
+                            <?php
+                                }
+                            ?>
                     </div>
 
                     <?php
                         }
-                    ?>
-
-                <?php
-
                     }
                 ?>
             </section>
 
 
-            <!-- Form -->
+<!-- Form -->
             <section class="main__section"  id="comment-block" >
                 
                 <form class="form-comments" action="article.php?id=<?=$art['id']?>#comments" method="POST">
                     <p class="articles-block__article__title">Добавьте Ваш комментарий :</p>
 
-                    <!-- Вывод ошибки о пустом textarea -->
+<!-- Вывод ошибки о пустом textarea -->
                     <?php
                         if(!empty($_SESSION['errors'])){
                             echo $_SESSION['errors'];
@@ -174,9 +178,7 @@ include 'includes/header.php';
                     <input class="comment-form__submit" name="submit" type="submit">
                 </form>
 
-
             </section>
-
 
         </main>
 
@@ -187,11 +189,6 @@ include 'includes/header.php';
         </div>
     </div>
 </div>
-
-
-
-    
-
 
 <?php
 require_once 'includes/footer.html';

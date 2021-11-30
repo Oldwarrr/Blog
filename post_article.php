@@ -49,6 +49,8 @@ if(isset($_POST['submit'])){
     }else {
         // redirect repeat post form
     }
+    header("Location: post_article.php");
+        die;
     
 }
 
