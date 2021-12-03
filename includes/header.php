@@ -14,11 +14,15 @@ if(isset($_COOKIE['login'])){
 $prof = mysqli_fetch_assoc($profile);
 
 
-// Изменение аватарки профиля
-
 
 // Допустимые форматы файла картинки
 $img_type = ["image/png","image/jpeg","image/gif"];
+$img_article_type = ["image/png","image/jpeg"];
+$file_max_size = 5242880; // Max Size  = 5 MB
+
+
+
+// Изменение аватарки профиля
 
 
 if(isset($_POST['upload_image'])){ //Кнопка отправки
@@ -26,7 +30,7 @@ if(isset($_POST['upload_image'])){ //Кнопка отправки
     $file_error = $_FILES['avatar']['error'];
     $file_type = $_FILES['avatar']['type'];
     $file_size = $_FILES['avatar']['size'];
-    $file_max_size = 5242880; // Max Size  = 5 MB
+    
     
 
         if($file_error == 0){ // Нет ошибок

@@ -19,6 +19,9 @@ $fields =
     ],
     
 ];
+
+
+
 if(isset($_POST['submit'])){
     $_SESSION['errors'] = '';
     $fields = loadValue($fields);
@@ -27,24 +30,43 @@ if(isset($_POST['submit'])){
         $category_list = $fields['category_list']['value'];
         $category_name = $fields['category_name']['value'];
         $article_text = $fields['article_text']['value'];
+
         $post_article_image_name = $_FILES['post_article_image']['name'];
-        move_uploaded_file($_FILES['post_article_image']['tmp_name'],"uploads/" . $post_article_image_name);
+        $post_article_image_type = $_FILES['post_article_image']['type'];
+        $post_article_image_size = $_FILES['post_article_image']['size'];
 
-        $add_article = $connection->query("INSERT INTO `articles`(`title`, `image`,`text`,`category_id`,`author_id`) VALUES(
-            '$category_name',
-            '$post_article_image_name',
-            '$article_text',
-            '$category_list',
-            '$prof[id]'
-        )");
-        $id_new_artice = $connection->query("SELECT `id` FROM `articles` WHERE `text` = '$article_text'");
-        $id_art = mysqli_fetch_assoc($id_new_artice);
-        header("Location: article.php?id=$id_art[id]");
-        die;
+        
+        
+        if(is_numeric(array_search($post_article_image_type, $img_article_type))){
+            
+            if($post_article_image_size < $file_max_size){
+                move_uploaded_file($_FILES['post_article_image']['tmp_name'],"uploads/" . $post_article_image_name);
+
+                $add_article = $connection->query("INSERT INTO `articles`(`title`, `image`,`text`,`category_id`,`author_id`) VALUES(
+                    '$category_name',
+                    '$post_article_image_name',
+                    '$article_text',
+                    '$category_list',
+                    '$prof[id]'
+                )");
+                $id_new_artice = $connection->query("SELECT `id` FROM `articles` WHERE `text` = '$article_text'");
+                $id_art = mysqli_fetch_assoc($id_new_artice);
+                header("Location: article.php?id=$id_art[id]");
+                die;
+
+                $_SESSION['errors'] .= "<li style='color: green'>Форма успешно отправлена!</li>";
+            }else{
+                $_SESSION['errors'] .= "<li>- Слишком большой файл!</li>";
+            }
+        }else{
+            $_SESSION['errors'] .= "<li>- Неподходящий формат файла для картинки статьи!</li>";
+        }
+
+
+        
 
 
 
-        $_SESSION['errors'] .= "<li style='color: green'>Форма успешно отправлена!</li>";
 
     }else {
         // redirect repeat post form
@@ -53,9 +75,6 @@ if(isset($_POST['submit'])){
         die;
     
 }
-
-
-
 
 ?>
 
