@@ -69,6 +69,42 @@ $persComCount = mysqli_num_rows($personalCommentsCount);
 ?>
 
 
+
+<!-- BUTTON BACK_TO_TOP -->
+
+<style>
+    .back_to_top {
+        position: fixed;
+        bottom: 200px;
+        right: 200px;
+        z-index: 9999;
+        width: 60px;
+        height: 60px;
+        text-align: center;
+        font-size: 50px;
+        line-height: 60px;
+        background: #6e5b5b;
+        color: #fff;
+        cursor: pointer;
+        border-radius: 2px;
+        display: none;
+    }
+
+    .back_to_top:hover {
+        background: #332626;
+    }
+
+    .back_to_top-show {
+        display: block;
+    }
+</style>
+<a class="back_to_top">&uarr;</a>
+
+<!-- ------------------ -->
+
+
+
+
 <header class="header home">
     <div class="container flex">
         <div class="profile">
