@@ -15,6 +15,32 @@ $prof = mysqli_fetch_assoc($profile);
 
 
 
+// Добавление или удаление статьи
+if(isset($_GET['details'])){
+    $new_article_details = $connection->query("SELECT * FROM `articles_on_moderation` WHERE `id` = '$_GET[id]'");
+    $new_art_details = mysqli_fetch_assoc($new_article_details);
+}
+
+if(isset($_GET['remove'])){
+    if($_GET['remove'] == "add"){
+        $new_article_details = $connection->query("SELECT * FROM `articles_on_moderation` WHERE `id` = '$_GET[id]'");
+        $new_art_details = mysqli_fetch_assoc($new_article_details);
+        $connection->query("INSERT INTO `articles`(`title`, `image`,`text`,`category_id`,`author_id`,`pubdate`) VALUES(
+            '$new_art_details[title]',
+            '$new_art_details[image]',
+            '$new_art_details[text]',
+            '$new_art_details[category_id]',
+            '$new_art_details[author_id]',
+            '$new_art_details[pubdate]'
+        )");
+    }
+    $connection->query("DELETE FROM `articles_on_moderation` WHERE `id` = '$_GET[id]'");
+    header("Location: moderation.php");
+    die;
+}
+
+
+
 // Допустимые форматы файла картинки
 $img_type = ["image/png","image/jpeg","image/gif"];
 $img_article_type = ["image/png","image/jpeg"];

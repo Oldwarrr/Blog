@@ -42,16 +42,16 @@ if(isset($_POST['submit'])){
             if($post_article_image_size < $file_max_size){
                 move_uploaded_file($_FILES['post_article_image']['tmp_name'],"uploads/" . $post_article_image_name);
 
-                $add_article = $connection->query("INSERT INTO `articles`(`title`, `image`,`text`,`category_id`,`author_id`) VALUES(
+                $add_article = $connection->query("INSERT INTO `articles_on_moderation`(`title`, `image`,`text`,`category_id`,`author_id`) VALUES(
                     '$category_name',
                     '$post_article_image_name',
                     '$article_text',
                     '$category_list',
                     '$prof[id]'
                 )");
-                $id_new_artice = $connection->query("SELECT `id` FROM `articles` WHERE `text` = '$article_text'");
-                $id_art = mysqli_fetch_assoc($id_new_artice);
-                header("Location: article.php?id=$id_art[id]");
+                // $id_new_artice = $connection->query("SELECT `id` FROM `articles` WHERE `text` = '$article_text'");
+                // $id_art = mysqli_fetch_assoc($id_new_artice);
+                header("Location: articles.php");//?id=$id_art[id]
                 die;
 
                 $_SESSION['errors'] .= "<li style='color: green'>Форма успешно отправлена!</li>";
