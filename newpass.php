@@ -1,6 +1,5 @@
 <?php
 require_once 'includes/config.php';
-require_once 'includes/header.html';
 
 
 
@@ -8,7 +7,6 @@ if(!isset($_SESSION['answer'])){
     header('Location: recover.php');
     die;
 }
-
 $fields = [
     'password' => [
         'field_name' => 'Пароль'
@@ -33,6 +31,11 @@ if(isset($_POST['submit'])){
         }
     }
 }
+
+
+require_once 'includes/header.html';
+
+
 
 
 ?>

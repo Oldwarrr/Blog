@@ -1,9 +1,13 @@
 <?php
     $articles = $connection->query("SELECT * FROM `articles` WHERE `author_id` = '$prof[id]' ORDER BY `id` DESC");
+    $articles_count = mysqli_num_rows($articles);
 
-    while($art = mysqli_fetch_assoc($articles))
+    if($articles_count > 0){
+
+        while($art = mysqli_fetch_assoc($articles))
     
-    {      
+    {
+         
 ?>
 
 <div class="articles-block__article">
@@ -27,6 +31,10 @@
 </div>
 <?php
 
-    }
-
+        }
+    }else{
+        ?>
+        <p>У вас нет опубликованных статей.</p>
+        <?php
+        }
 ?>

@@ -1,13 +1,12 @@
 <?php
 require_once 'includes/config.php';
-require_once 'includes/header.html';
 
 unset($_SESSION['mail']);
 unset($_SESSION['answer']);
 unset($_SESSION['changePass']);
 unset($_SESSION['registration']);
 
-
+// pre($GLOBALS);
 $fields = [
     'login' => [
         'field_name' => 'Логин'
@@ -52,6 +51,8 @@ if(isset($_POST['submit'])){
     }
 }
 
+
+require_once 'includes/header.html';
 
 ?>
 

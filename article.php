@@ -1,26 +1,24 @@
 <?php
 require_once 'includes/config.php';
-require_once 'includes/header.html';
 require_once 'includes/check_login_and_exit.php';
-include 'includes/header.php';
 
 
 //Проверка существования страницы
 
-    $article = $connection->query("SELECT * FROM `articles` WHERE `id` = " . (int)$_GET['id']);
-    if(mysqli_num_rows($article) <= 0){
-        echo 'Статья не найдена';
-    }else{
+$article = $connection->query("SELECT * FROM `articles` WHERE `id` = " . (int)$_GET['id']);
+if(mysqli_num_rows($article) <= 0){
+    echo 'Статья не найдена';
+}else{
     $art = mysqli_fetch_assoc($article);
-
-
-// Счетчик просмотров
-
+    
+    
+    // Счетчик просмотров
+    
     $connection->query("UPDATE `articles` SET `views` = `views` + 1 WHERE `id` =" . (int)$art['id']);
-
-
-//Добавление комментария
-                   
+    
+    
+    //Добавление комментария
+    
     if(isset($_POST['submit'])){
         $_SESSION['errors'] = '';
         if(!empty($_POST['comment'])){
@@ -31,12 +29,12 @@ include 'includes/header.php';
             
         }
         header("Location: article.php?id=$art[id]");
-            exit;
+        exit;
     }
-
-
-//Удаление статьи
-
+    
+    
+    //Удаление статьи
+    
     if(isset($_GET['delete']) &&($admin == 1 || $prof['id'] == $author_id['author_id'])){
         $connection->query("DELETE FROM `comments` WHERE `articles_id` = '$art[id]'");
         unlink("uploads/" . $art['image']);
@@ -44,23 +42,36 @@ include 'includes/header.php';
         header("Location: home.php");
         exit;
     }
-
-
-//Удаление комментария
-
+    
+    
+    //Удаление комментария
+    
     if(isset($_GET['comment_id'])){
         $author_comment_data = $connection->query("SELECT `author_id` FROM `comments` WHERE `id` = '$_GET[comment_id]'");
         $author_comment = mysqli_fetch_assoc($author_comment_data);
     }
-     if(isset($_GET['delete_comment'])  && ($admin == 1 || $prof['id'] == $author_comment['author_id'])){
+    if(isset($_GET['delete_comment'])  && ($admin == 1 || $prof['id'] == $author_comment['author_id'])){
         $connection->query("DELETE FROM `comments` WHERE `id` = '$_GET[comment_id]'");
         header("Location: article.php?id=$art[id]");
         exit;    
     }
+    ?>
+
+
+
+<?php 
+require_once 'includes/header.html';
+include 'includes/header.php';
 ?>
 
 
+
 <!-- Контент -->
+
+
+
+
+
 
 <div class="container">
     <div class="flex-container">

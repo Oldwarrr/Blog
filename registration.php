@@ -1,7 +1,5 @@
 <?php
 require_once 'includes/config.php';
-require_once 'includes/header.html';
-
 
 
 $fields = 
@@ -29,14 +27,6 @@ $fields =
     ]
     
 ];
-?>
-
-
-<!-- <textarea class="test-php"> -->
-    <?php
-    // pre($_POST);
-
-    
 
     if(isset($_POST['submit'])){
         $fields = loadValue($fields);
@@ -97,10 +87,10 @@ $fields =
         // echo 'Неотправленная форма';  // Индикатор исправности
     }
 
-    // pre($_SESSION);
+
+    require_once 'includes/header.html';
 
     ?>
-<!-- </textarea> -->
 
 
 

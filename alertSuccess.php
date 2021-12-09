@@ -1,14 +1,15 @@
 <?php
 require_once 'includes/config.php';
-require_once 'includes/header.html';
 
 if(!isset($_SESSION['changePass']) && !isset($_SESSION['registration'])){
     header('Location: startpage.php');
     die;
 }else{
-    header('refresh: 5; url=http://blog/authorization.php');
+    header('refresh: 5; url=https://oldwarr-projects.site/authorization.php');
 }
 
+
+require_once 'includes/header.html';
 ?>
 
 <header class="startpage">

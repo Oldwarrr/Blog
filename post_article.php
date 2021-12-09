@@ -1,8 +1,6 @@
 <?php
 require_once 'includes/config.php';
-require_once 'includes/header.html';
 require_once 'includes/check_login_and_exit.php';
-include 'includes/header.php';
 
 
 
@@ -51,7 +49,7 @@ if(isset($_POST['submit'])){
                 )");
                 // $id_new_artice = $connection->query("SELECT `id` FROM `articles` WHERE `text` = '$article_text'");
                 // $id_art = mysqli_fetch_assoc($id_new_artice);
-                header("Location: articles.php");//?id=$id_art[id]
+                header("Location: home.php");//?id=$id_art[id]
                 die;
 
                 $_SESSION['errors'] .= "<li style='color: green'>Форма успешно отправлена!</li>";
@@ -75,6 +73,11 @@ if(isset($_POST['submit'])){
         die;
     
 }
+
+
+require_once 'includes/header.html';
+
+include 'includes/header.php';
 
 ?>
 

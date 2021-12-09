@@ -1,12 +1,14 @@
 <?php
 require_once 'includes/config.php';
-require_once 'includes/header.html';
 
 
 if(!isset($_SESSION['mail'])){
     header('Location: recover.php');
     die;
 }
+
+
+
 
 $fields = [
     'answer' => [
@@ -32,6 +34,9 @@ if(isset($_POST['submit'])){
         }
     }
 }
+
+
+require_once 'includes/header.html';
 
 
 ?>

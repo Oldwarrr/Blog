@@ -1,7 +1,7 @@
 <?php
 require_once 'includes/config.php';
-require_once 'includes/header.html';
 require_once 'includes/check_login_and_exit.php';
+require_once 'includes/header.html';
 include 'includes/header.php';
 ?>
 
