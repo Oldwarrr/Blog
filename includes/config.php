@@ -46,10 +46,14 @@ while($cat = mysqli_fetch_assoc($categories_q)){
 }
 if(isset($_COOKIE['login'])){
     $profile = $connection->query("SELECT * FROM `users` WHERE `login` = '$_COOKIE[login]'");
+    $prof = mysqli_fetch_assoc($profile);
 }else{
-    $profile = $connection->query("SELECT * FROM `users` WHERE `login` = '$_SESSION[login]'");
+    if(isset($_SESSION['login'])){
+        $profile = $connection->query("SELECT * FROM `users` WHERE `login` = '$_SESSION[login]'");
+        $prof = mysqli_fetch_assoc($profile);
+    }
 }
-$prof = mysqli_fetch_assoc($profile);
+
 
 
 
