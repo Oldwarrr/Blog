@@ -72,7 +72,6 @@ include 'includes/header.php';
 
 
 
-
 <div class="container">
     <div class="flex-container">
 
@@ -89,7 +88,20 @@ include 'includes/header.php';
                          if($admin == 1 || $prof['id'] == $author_id['author_id']):?>
                         <div class="delete"><a class="color-brown" href="article.php?id=<?=$art['id']?>&delete=true">Удалить статью</a></div>
                         <?php endif?>
-                        <div class="article-views"><?=$art['views']?> просмотров</div>
+                        <div class="article-views" style="margin-top: 10px;">
+                            <!-- Склонение слова "просмотры" -->
+                            <?php
+                                $declension = substr($art['views'], -1);
+                                echo $art['views'];
+                                if($declension == 1){
+                                    echo " просмотр";
+                                }elseif($declension >= 2 && $declension <= 4){
+                                    echo " просмотра";
+                                }else {
+                                    echo " просмотров";
+                                }
+                            ?>
+                        </div>
                     </div>
                 </div>
                 <img class="article-image" src="uploads/<?=$art['image']?>" alt="">
