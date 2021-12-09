@@ -1,4 +1,5 @@
 ## Форум IT
+### Текущий адрес форума : [it-forum.oldwarr-projects.site/](https://it-forum.oldwarr-projects.site/)
 ### Технологии:
 - PHP 8.0
 - MySQL
