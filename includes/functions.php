@@ -7,11 +7,13 @@ function pre($arr, $mode = 1){
 
 //Загрузка данных формы
 function loadValue($data){
+    
     foreach($_POST as $k => $v){
         if(array_key_exists($k, $data)){
             $data[$k]['value'] = trim(strip_tags(stripcslashes(htmlspecialchars($v))));
         }
     }
+    
     return $data;
 }
 function validate($data){

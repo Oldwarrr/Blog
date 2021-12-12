@@ -142,7 +142,7 @@ include 'includes/header.php';
                         {      
                     ?>
 
-                    <div class="articles-block__article w100">
+                    <div class="articles-block__article w100 comments">
                         <div class="articles-block__article__picture">
 
                     <?php

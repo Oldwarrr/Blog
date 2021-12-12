@@ -52,7 +52,6 @@
             <td>№</td>
             <td>Название статьи</td>
             <td>Категория</td>
-            <td>Текст</td>
         </tr>
         <?php
             $check = 0;
@@ -64,8 +63,7 @@
             <td><?=$check?></td>
             <td><?=$art_on_moderation['title']?></td>
             <td><?=$categories[$art_category_id]['title']?></td>
-            <td><?=$art_on_moderation['text']?></td>
-            <td><a href="moderation.php?id=<?=$art_on_moderation['id']?>&details">Подробнее..</a></td>
+            <td><a href="moderation.php?id=<?=$art_on_moderation['id']?>&details"><span class="desc-max">Подробнее..</span><span class="desc-min">??</span></a></td>
             <td class="moderation-article__icons-item"><a class="moderation-article__icon" href="moderation.php?id=<?=$art_on_moderation['id']?>&remove=add"><img src="../img/profile/add_article.png" alt=""></a></td>
             <td class="moderation-article__icons-item"><a class="moderation-article__icon" href="moderation.php?id=<?=$art_on_moderation['id']?>&remove=del"><img src="../img/profile/decline_article.png" alt=""></a></td>
             </tr>

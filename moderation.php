@@ -13,8 +13,8 @@ require_once 'includes/check_login_and_exit.php';
 include 'includes/header.php';
 ?>
 <div class="container">
-    <div class="profile-block">
-        <div class="profile__sidebar">
+    <div class="profile-block moderation">
+        <div class="profile__sidebar moderation">
             <?php require_once 'includes/profile-sidebar.php' ?>
         </div>
         <main class="profile__main">
@@ -35,3 +35,5 @@ include 'includes/header.php';
 
     </div>
 </div>
+
+<?php require_once 'includes/footer.html'?>
