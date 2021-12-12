@@ -33,6 +33,10 @@ if(mysqli_num_rows($article) <= 0){
     }
     
     //Удаление статьи
+
+    if(isset($_GET['id'])){  
+        $author_id = mysqli_fetch_assoc($connection->query("SELECT `author_id` FROM `articles` WHERE `id` = '$_GET[id]'"));
+    }
     
     if(isset($_GET['delete']) &&($admin == 1 || $prof['id'] == $author_id['author_id'])){
         $connection->query("DELETE FROM `comments` WHERE `articles_id` = '$art[id]'");
