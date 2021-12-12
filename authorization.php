@@ -6,6 +6,14 @@ unset($_SESSION['answer']);
 unset($_SESSION['changePass']);
 unset($_SESSION['registration']);
 
+if(isset($_COOKIE['login'])){
+    header('Location: home.php');
+    die;
+}elseif(isset($_SESSION['login'])){
+    header('Location: home.php');
+    die;
+}
+
 // pre($GLOBALS);
 $fields = [
     'login' => [

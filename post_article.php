@@ -64,6 +64,7 @@ if(isset($_POST['submit'])){
                 )");
                 // $id_new_artice = $connection->query("SELECT `id` FROM `articles` WHERE `text` = '$article_text'");
                 // $id_art = mysqli_fetch_assoc($id_new_artice);
+                $_SESSION['alert'] = 1;
                 header("Location: alert.php");//?id=$id_art[id]
                 die;
 

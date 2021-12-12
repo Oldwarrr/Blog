@@ -1,7 +1,9 @@
 <?php
 require_once 'includes/config.php';
-
-
+if(!isset($_SESSION['alert'])){
+    header('Location: home.php');
+}
+unset($_SESSION['alert']);
 header('refresh: 5; url=https://it-forum.oldwarr-projects.site/home.php');
 
 

@@ -1,7 +1,13 @@
 <?php
 require_once 'includes/config.php';
 
-
+if(isset($_COOKIE['login'])){
+    header('Location: home.php');
+    die;
+}elseif(isset($_SESSION['login'])){
+    header('Location: home.php');
+    die;
+}
 if(!isset($_SESSION['mail'])){
     header('Location: recover.php');
     die;

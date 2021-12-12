@@ -7,7 +7,7 @@ require_once 'includes/check_login_and_exit.php';
 
 $article = $connection->query("SELECT * FROM `articles` WHERE `id` = " . (int)$_GET['id']);
 if(mysqli_num_rows($article) <= 0){
-    echo 'Статья не найдена';
+    // echo 'Статья не найдена';
 }else{
     $art = mysqli_fetch_assoc($article);
     
@@ -33,9 +33,7 @@ if(mysqli_num_rows($article) <= 0){
     }
     
     //Удаление статьи
-    if(isset($_GET['id'])){  
-        $author_id = mysqli_fetch_assoc($connection->query("SELECT `author_id` FROM `articles` WHERE `id` = '$_GET[id]'"));
-    }
+    
     if(isset($_GET['delete']) &&($admin == 1 || $prof['id'] == $author_id['author_id'])){
         $connection->query("DELETE FROM `comments` WHERE `articles_id` = '$art[id]'");
         unlink("uploads/" . $art['image']);
@@ -56,7 +54,8 @@ if(mysqli_num_rows($article) <= 0){
         header("Location: article.php?id=$art[id]");
         exit;    
     }
-    ?>
+}
+?>
 
 
 
@@ -65,7 +64,13 @@ require_once 'includes/header.html';
 include 'includes/header.php';
 ?>
 
-
+<!-- -------------------------------------- -->
+<!-- -------------------------------------- -->
+<!-- -------------------------------------- -->
+<!-- -------------------------------------- -->
+<!-- -------------------------------------- -->
+<!-- -------------------------------------- -->
+<!-- -------------------------------------- -->
 
 <!-- Контент -->
 
@@ -77,7 +82,9 @@ include 'includes/header.php';
     <div class="flex-container">
 
 
-        <main class="main">
+        <?php if(isset($art)){?>
+            <!-- Условие 1 -->
+            <main class="main">
 
             <section class="main__section">
                 
@@ -179,7 +186,7 @@ include 'includes/header.php';
 
                     <?php
                         }
-                    }
+                    
                 ?>
             </section>
 
@@ -205,7 +212,18 @@ include 'includes/header.php';
             </section>
 
         </main>
+        <?php }else{?>
+            <!-- Условие 2 -->
+            <main class="main">
+    
+                <section class="main__section">
+                    
+                    <p>Статья не найдена!</p>        
+                     
+                </section>
 
+            </main>
+        <?php }?>
 
         
         <div class="sidebar">
