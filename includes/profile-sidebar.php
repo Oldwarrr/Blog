@@ -1,7 +1,7 @@
 
 <?php
     // Количество статей на модерацию
-    $articles_on_moderation = $connection->query("SELECT * FROM `articles_on_moderation`");
+    $articles_on_moderation = $connection->query("SELECT * FROM `articles_on_moderation` ORDER BY `id` DESC");
     $articles_on_moderation_count = mysqli_num_rows($articles_on_moderation);
 ?>
 
