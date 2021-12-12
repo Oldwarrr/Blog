@@ -4,9 +4,8 @@ require_once 'includes/config.php';
 
 
 
-if(isset($_GET['id'])){  
-    $author_id = mysqli_fetch_assoc($connection->query("SELECT `author_id` FROM `articles` WHERE `id` = '$_GET[id]'"));
-}
+
+
 // Count of user`s articles
 $personalArticlesCount = $connection->query("SELECT * FROM `articles` WHERE `author_id` = '$prof[id]'");
 $persArtCount = mysqli_num_rows($personalArticlesCount);

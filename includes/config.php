@@ -37,6 +37,11 @@ $img_type = ["image/png","image/jpeg","image/gif"];
 $img_article_type = ["image/png","image/jpeg"];
 $file_max_size = 5242880; // Max Size  = 5 MB
 
+// Счетчик для имён картинок
+$image_counter_data = mysqli_fetch_assoc($connection->query("SELECT `counter` FROM `image_counter`"));
+$image_counter = $image_counter_data['counter'];
+
+
 
 
 $categories_q = $connection->query("SELECT * FROM `categories`");
@@ -65,8 +70,15 @@ if(isset($_GET['details'])){
 
 if(isset($_GET['remove'])){
     if($_GET['remove'] == "add"){
+
+        
+
+        //Вытащили данные статьи
         $new_article_details = $connection->query("SELECT * FROM `articles_on_moderation` WHERE `id` = '$_GET[id]'");
         $new_art_details = mysqli_fetch_assoc($new_article_details);
+
+
+
         $connection->query("INSERT INTO `articles`(`title`, `image`,`text`,`category_id`,`author_id`,`pubdate`) VALUES(
             '$new_art_details[title]',
             '$new_art_details[image]',
@@ -80,8 +92,6 @@ if(isset($_GET['remove'])){
     header("Location: moderation.php");
     die;
 }
-
-
 
 
 

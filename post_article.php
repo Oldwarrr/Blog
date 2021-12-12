@@ -38,11 +38,26 @@ if(isset($_POST['submit'])){
         if(is_numeric(array_search($post_article_image_type, $img_article_type))){
             
             if($post_article_image_size < $file_max_size){
-                move_uploaded_file($_FILES['post_article_image']['tmp_name'],"uploads/" . $post_article_image_name);
+
+
+
+                //Новое имя для картинки, равное id публикуемой статьи
+                $connection->query("UPDATE `image_counter` SET `counter` = `counter` + 1");
+                $new_art_img_name = $image_counter;
+                // Формат картинки статьи - .jpg/ .png  
+                $new_art_img_type = stristr($post_article_image_name,'.');
+
+                // Склеили имя + формат картинки
+                $new_art_img =  "$new_art_img_name$new_art_img_type";
+
+
+
+
+                move_uploaded_file($_FILES['post_article_image']['tmp_name'],"uploads/" . $new_art_img);
 
                 $add_article = $connection->query("INSERT INTO `articles_on_moderation`(`title`, `image`,`text`,`category_id`,`author_id`) VALUES(
                     '$category_name',
-                    '$post_article_image_name',
+                    '$new_art_img',
                     '$article_text',
                     '$category_list',
                     '$prof[id]'

@@ -3,9 +3,12 @@
     // Количество статей на модерацию
     $articles_on_moderation = $connection->query("SELECT * FROM `articles_on_moderation` ORDER BY `id` DESC");
     $articles_on_moderation_count = mysqli_num_rows($articles_on_moderation);
+
+    
 ?>
 
 <ul class="profile__menu">
+            
 
                 <li class="profile__menu__item">
                     <a href="profile-info.php" class="profile__menu__link"><img class="profile__sidebar__images" src="/img/profile/profile.png" alt="">Профиль</a>
@@ -36,3 +39,6 @@
                 ?>
 
             </ul>
+
+
+            
