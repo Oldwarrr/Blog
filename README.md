@@ -1,4 +1,5 @@
 ## Форум IT
+### На время работы хостинга, доступ по ссылке : [it-forum.oldwarr-projects.site](https://it-forum.oldwarr-projects.site/)
 ### Технологии:
 - PHP 8.0
 - MySQL
