@@ -42,10 +42,6 @@ if(isset($_POST['submit'])){
 
 
 require_once 'includes/header.html';
-
-
-
-
 ?>
 
 <header class="startpage">

@@ -14,7 +14,7 @@ if(isset($_COOKIE['login'])){
     die;
 }
 
-// pre($GLOBALS);
+
 $fields = [
     'login' => [
         'field_name' => 'Логин'

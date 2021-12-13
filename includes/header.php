@@ -1,20 +1,13 @@
 <?php
 require_once 'includes/config.php';
 
-
-
-
-
-
 // Count of user`s articles
 $personalArticlesCount = $connection->query("SELECT * FROM `articles` WHERE `author_id` = '$prof[id]'");
 $persArtCount = mysqli_num_rows($personalArticlesCount);
 // Count of user`s comments
 $personalCommentsCount = $connection->query("SELECT * FROM `comments` WHERE `author_id` = '$prof[id]'");
 $persComCount = mysqli_num_rows($personalCommentsCount);
-
 ?>
-
 
 
 <!-- BUTTON BACK_TO_TOP -->
@@ -109,9 +102,6 @@ $persComCount = mysqli_num_rows($personalCommentsCount);
     </div>
     <a href="post_article.php" class="header__nav__list__item__link post_article_link">Опубликовать статью</a>
 </div>
-
-
-
 
 
 

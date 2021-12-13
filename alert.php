@@ -7,7 +7,6 @@ unset($_SESSION['alert']);
 header('refresh: 5; url=https://it-forum.oldwarr-projects.site/home.php');
 
 
-
 require_once 'includes/header.html';
 ?>
 

@@ -7,5 +7,4 @@ $connection = mysqli_connect(
     $config['db']['database']
 );
 mysqli_query($connection, "SET NAMES utf8");
-
-
+?>

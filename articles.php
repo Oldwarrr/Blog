@@ -124,45 +124,6 @@ if(isset($_GET['category'])){
 }
 
 
-// if($pageCount >= 5){
-// 	if($page == 1){
-// 		$centerPages .= "<li><span class='pagination__page active'>$page</span></li>";
-// 		$centerPages .= "<li><a class='pagination__page' href='$_SERVER[PHP_SELF]?page=$add1'>$add1</a></li>";
-// 		$centerPages .= "<li><a class='pagination__page' href='$_SERVER[PHP_SELF]?page=$add2'>$add2</a></li>";
-// 		$centerPages .= "<li><a class='pagination__page' href='$_SERVER[PHP_SELF]?page=$add3'>$add3</a></li>";
-// 		$centerPages .= "<li><a class='pagination__page' href='$_SERVER[PHP_SELF]?page=$add4'>$add4</a></li>";
-// 	}elseif($page == ($pageCount -1)){
-// 		$centerPages .= "<li><a class='pagination__page' href='$_SERVER[PHP_SELF]?page=$sub3'>$sub3</a></li>";
-// 		$centerPages .= "<li><a class='pagination__page' href='$_SERVER[PHP_SELF]?page=$sub2'>$sub2</a></li>";
-// 		$centerPages .= "<li><a class='pagination__page' href='$_SERVER[PHP_SELF]?page=$sub1'>$sub1</a></li>";
-// 		$centerPages .= "<li><span class='pagination__page active'>$page</span></li>";
-// 		$centerPages .= "<li><a class='pagination__page' href='$_SERVER[PHP_SELF]?page=$add1'>$add1</a></li>";
-// 	}elseif($page ==$pageCount){
-// 		$centerPages .= "<li><a class='pagination__page' href='$_SERVER[PHP_SELF]?page=$sub4'>$sub4</a></li>";
-// 		$centerPages .= "<li><a class='pagination__page' href='$_SERVER[PHP_SELF]?page=$sub3'>$sub3</a></li>";
-// 		$centerPages .= "<li><a class='pagination__page' href='$_SERVER[PHP_SELF]?page=$sub2'>$sub2</a></li>";
-// 		$centerPages .= "<li><a class='pagination__page' href='$_SERVER[PHP_SELF]?page=$sub1'>$sub1</a></li>";
-// 		$centerPages .= "<li><span class='pagination__page active'>$page</span></li>";
-// 	}elseif($page > 2 && $page <($pageCount - 1)){
-// 		$centerPages .= "<li><a class='pagination__page' href='$_SERVER[PHP_SELF]?page=$sub2'>$sub2</a></li>";
-// 		$centerPages .= "<li><a class='pagination__page' href='$_SERVER[PHP_SELF]?page=$sub1'>$sub1</a></li>";
-// 		$centerPages .= "<li><span class='pagination__page active'>$page</span></li>";
-// 		$centerPages .= "<li><a class='pagination__page' href='$_SERVER[PHP_SELF]?page=$add1'>$add1</a></li>";
-// 		$centerPages .= "<li><a class='pagination__page' href='$_SERVER[PHP_SELF]?page=$add2'>$add2</a></li>";
-// 	}elseif($page = 2){
-// 		$centerPages .= "<li><a class='pagination__page' href='$_SERVER[PHP_SELF]?page=$sub1'>$sub1</a></li>";
-// 		$centerPages .= "<li><span class='pagination__page active'>$page</span></li>";
-// 		$centerPages .= "<li><a class='pagination__page' href='$_SERVER[PHP_SELF]?page=$add1'>$add1</a></li>";
-// 		$centerPages .= "<li><a class='pagination__page' href='$_SERVER[PHP_SELF]?page=$add2'>$add2</a></li>";
-// 		$centerPages .= "<li><a class='pagination__page' href='$_SERVER[PHP_SELF]?page=$add3'>$add3</a></li>";
-// 	}
-// }
-
-
-
-
-
-
 ?>
 
 
@@ -187,47 +148,13 @@ if(isset($_GET['category'])){
                 </div>
                 <div class="articles-block" style="<?php echo ($pageCount < 2) ? 'min-height:auto;' : ''?>">
 
-                    <?php
-                        // $articles_category = $connection->query("SELECT * FROM `articles` WHERE `id` = " . (int)$_GET['category']);
-                        // if(false){
-                        //     echo 'Статья не найдена';
-                        // }else 
-                        
-                        // {
-                        
-                    ?>
-
-
-
-
                     <div class="articles-block__content">
                     <?php
-                        // $articles = $connection->query("SELECT * FROM `articles` ORDER BY `id` DESC LIMIT $start,$limit");
-
-
-
-                        // if(isset($_GET['category'])){
-                        //     $articles = $connection->query("SELECT * FROM `articles` WHERE `category_id` =" . (int)$_GET['category']);
-                        // }else{
-                        //     $articles = $connection->query("SELECT * FROM `articles` ORDER BY `id` DESC LIMIT $start,$limit");
-                        // }
-                        
-
-
-
-
-
-
 
                         if($count != 0){
                             while($art = mysqli_fetch_assoc($articles))
-                            
                             {     
-                            
-                            
 
-
-                            
                     ?>
 
                     <div class="articles-block__article">
@@ -322,11 +249,7 @@ if(isset($_GET['category'])){
                                         }else {
                                             $classActive = "";
                                         }
-                                        // echo "
-                                        // <li>
-                                        // <a class = 'pagination__page $classActive' href = '?page=$i'>$i</a>
-                                        // </li>
-                                        // ";
+                                        
                                         if(isset($_GET['category'])){
                                             echo "
                                             <li>
@@ -401,10 +324,6 @@ if(isset($_GET['category'])){
                 </div>
                      
             </section>
-
-
-            
-
 
         </main>
 

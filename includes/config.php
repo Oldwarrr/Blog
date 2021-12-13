@@ -42,8 +42,6 @@ $image_counter_data = mysqli_fetch_assoc($connection->query("SELECT `counter` FR
 $image_counter = $image_counter_data['counter'];
 
 
-
-
 $categories_q = $connection->query("SELECT * FROM `categories`");
 $categories = [];
 while($cat = mysqli_fetch_assoc($categories_q)){
@@ -95,8 +93,6 @@ if(isset($_GET['remove'])){
 
 
 
-
-
 // Изменение аватарки профиля
 
 
@@ -129,3 +125,4 @@ if(isset($_POST['upload_image'])){ //Кнопка отправки
     header("Location: profile-info.php");
     die;   
 }
+?>

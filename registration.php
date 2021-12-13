@@ -77,26 +77,12 @@ $fields =
                 }
             }else{
                 $_SESSION['errors'] .= "<li>- Такой логин уже существует</li>";
-            }
-
-
-            // echo "Все поля заполнены"; // Индикатор исправности
-            
-            
-            
-        }else{
-            // echo "Заполните все поля!"; // Индикатор исправности
-            // header('Location: registration.php');
-            // die;
-         
+            }    
         }
-    }else{
-        // echo 'Неотправленная форма';  // Индикатор исправности
     }
 
 
     require_once 'includes/header.html';
-
     ?>
 
 
@@ -158,7 +144,6 @@ $fields =
     </div>
 </header>
 
-<!-- Testing PHP Scripts -->
 
 
 <?php

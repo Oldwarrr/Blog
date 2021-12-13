@@ -68,26 +68,14 @@ require_once 'includes/header.html';
 include 'includes/header.php';
 ?>
 
-<!-- -------------------------------------- -->
-<!-- -------------------------------------- -->
-<!-- -------------------------------------- -->
-<!-- -------------------------------------- -->
-<!-- -------------------------------------- -->
-<!-- -------------------------------------- -->
-<!-- -------------------------------------- -->
 
 <!-- Контент -->
-
-
-
-
 
 <div class="container">
     <div class="flex-container">
 
 
         <?php if(isset($art)){?>
-            <!-- Условие 1 -->
             <main class="main">
 
             <section class="main__section">
@@ -201,7 +189,7 @@ include 'includes/header.php';
                 <form class="form-comments" action="article.php?id=<?=$art['id']?>#comments" method="POST">
                     <p class="articles-block__article__title">Добавьте Ваш комментарий :</p>
 
-<!-- Вывод ошибки о пустом textarea -->
+<!-- Вывод ошибки -->
                     <?php
                         if(!empty($_SESSION['errors'])){
                             echo $_SESSION['errors'];
@@ -217,7 +205,6 @@ include 'includes/header.php';
 
         </main>
         <?php }else{?>
-            <!-- Условие 2 -->
             <main class="main">
     
                 <section class="main__section">

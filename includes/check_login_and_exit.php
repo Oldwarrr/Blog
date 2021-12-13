@@ -14,3 +14,4 @@ if(!empty($_GET) &&  isset($_GET['do'])){
     die;
     }
 }
+?>

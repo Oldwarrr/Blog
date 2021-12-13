@@ -5,9 +5,6 @@ require_once 'includes/check_login_and_exit.php';
 include 'includes/header.php';
 ?>
 
-
-
-
 <div class="container">
     <div class="flex-container">
 
@@ -47,11 +44,6 @@ include 'includes/header.php';
         </div>
     </div>
 </div>
-
-
-
-    
-
 
 <?php
 require_once 'includes/footer.html';
